@@ -145,5 +145,11 @@
 		    
 		    
     </LinearLayout>
-
+	<Spinner
+	    android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/selectionSports">
+	    
+	</Spinner>
 </LinearLayout>
