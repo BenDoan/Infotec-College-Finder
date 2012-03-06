@@ -46,11 +46,12 @@
                 android:inputType="text"
                 android:text="@string/sports" />
 
-            <EditText
-                android:id="@+id/sports2"
-                android:layout_width="238dp"
+            <Spinner
+                android:id="@+id/spinnerSports"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:prompt="@string/selectionSports" >
+            </Spinner>
         </LinearLayout>
 
         <LinearLayout
@@ -84,11 +85,12 @@
                 android:inputType="text"
                 android:text="@string/tuition" />
 
-            <EditText
-                android:id="@+id/tuition2"
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/spinnerTuition"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:prompt="@string/selectionTuiton" >
+            </Spinner>
         </LinearLayout>
 
         <LinearLayout
@@ -122,24 +124,18 @@
                 android:inputType="text"
                 android:text="@string/region" />
 
-            <EditText
-                android:id="@+id/region2"
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/spinnerRegion"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:prompt="@string/selectionRegion" >
+            </Spinner>
         </LinearLayout>
-
-      
     </LinearLayout>
 
+    <Button android:id="@+id/search" 
+	  android:text="@string/search"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
 
-</LinearLayout>
-
-	<Spinner
-	    android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/selectionSports">
-	    
-	</Spinner>
 </LinearLayout>
