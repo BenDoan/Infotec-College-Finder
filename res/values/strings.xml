@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, InfotecActivity!</string>
-    <string name="app_name">Infotec</string>
+    <string name="hello">Welcome to the Infotec College Finder</string>
+    <string name="app_name">College Finder</string>
+    <string name="major">Major</string>
+    <string name="sports">Sports</string>
+    <string name="population">School Population</string>
+    <string name="tuition">Cost</string>
+    <string name="housing">Housing</string>
+    <string name="region">Region</string>
 
 </resources>
