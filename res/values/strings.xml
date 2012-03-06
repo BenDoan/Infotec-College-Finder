@@ -10,5 +10,12 @@
     <string name="housing">Housing</string>
     <string name="region">Region</string>
     <string name="search">Search</string>
-
+    <string name="selectionSports">Sports List</string>
+    <string-array name = "sports_array" >
+        <item >"Soccer"</item>
+        <item >"Basketball"</item>
+        <item >"Football"</item>
+        <item >"Hockey"</item>
+        <item >"Baseball"</item>
+    </string-array>
 </resources>
