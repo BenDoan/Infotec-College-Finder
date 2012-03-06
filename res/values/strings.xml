@@ -9,5 +9,6 @@
     <string name="tuition">Cost</string>
     <string name="housing">Housing</string>
     <string name="region">Region</string>
+    <string name="search">Search</string>
 
 </resources>
