@@ -9,7 +9,9 @@ package mwhs.ap.doan.app;
 
 public final class R {
     public static final class array {
+        public static final int region_array=0x7f050002;
         public static final int sports_array=0x7f050000;
+        public static final int tuition_array=0x7f050001;
     }
     public static final class attr {
     }
@@ -31,12 +33,12 @@ public final class R {
         public static final int population1=0x7f060008;
         public static final int population2=0x7f060009;
         public static final int region1=0x7f060011;
-        public static final int region2=0x7f060012;
-        public static final int spinner=0x7f060013;
+        public static final int search=0x7f060013;
+        public static final int spinnerRegion=0x7f060012;
+        public static final int spinnerSports=0x7f060006;
+        public static final int spinnerTuition=0x7f06000c;
         public static final int sports1=0x7f060005;
-        public static final int sports2=0x7f060006;
         public static final int tuition1=0x7f06000b;
-        public static final int tuition2=0x7f06000c;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -49,7 +51,9 @@ public final class R {
         public static final int population=0x7f040004;
         public static final int region=0x7f040007;
         public static final int search=0x7f040008;
+        public static final int selectionRegion=0x7f04000b;
         public static final int selectionSports=0x7f040009;
+        public static final int selectionTuition=0x7f04000a;
         public static final int sports=0x7f040003;
         public static final int tuition=0x7f040005;
     }

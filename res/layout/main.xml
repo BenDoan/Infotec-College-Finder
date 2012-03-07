@@ -89,7 +89,7 @@
                 android:id="@+id/spinnerTuition"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:prompt="@string/selectionTuiton" >
+                android:prompt="@string/selectionTuition" >
             </Spinner>
         </LinearLayout>
 
