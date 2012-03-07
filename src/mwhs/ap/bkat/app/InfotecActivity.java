@@ -23,6 +23,8 @@ public class InfotecActivity extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnersport.setAdapter(adapter);
         spinnersport.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        Object s = spinnersport.getSelectedItem();
+        System.out.println(s);
         
         Spinner spinnertuition = (Spinner) findViewById(R.id.spinnerTuition);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
@@ -44,9 +46,6 @@ public class InfotecActivity extends Activity {
 
         public void onItemSelected(AdapterView<?> parent,
             View view, int pos, long id) {
-
-          Toast.makeText(parent.getContext(),
-              parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 
           Toast.makeText(parent.getContext(), parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
         }
