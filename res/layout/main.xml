@@ -24,7 +24,6 @@
                 android:id="@+id/major1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/major" />
 
             <EditText
@@ -43,7 +42,6 @@
                 android:id="@+id/sports1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/sports" />
 
             <Spinner
@@ -63,7 +61,6 @@
                 android:id="@+id/population1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/population" />
 
             <EditText
@@ -82,7 +79,6 @@
                 android:id="@+id/tuition1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/tuition" />
 
             <Spinner
@@ -102,7 +98,6 @@
                 android:id="@+id/housing1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/housing" />
 
             <EditText
@@ -121,7 +116,6 @@
                 android:id="@+id/region1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:text="@string/region" />
 
             <Spinner

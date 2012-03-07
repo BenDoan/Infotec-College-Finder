@@ -22,16 +22,33 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerSports);
+        Spinner spinnersport = (Spinner) findViewById(R.id.spinnerSports);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.sports_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-        
+
+   
         search = (Button) findViewById(R.id.search);
         search.setOnClickListener(this);
+
+        spinnersport.setAdapter(adapter);
+        spinnersport.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        Object s = spinnersport.getSelectedItem();
+        System.out.println(s);
         
+        Spinner spinnertuition = (Spinner) findViewById(R.id.spinnerTuition);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+                this, R.array.tuition_array, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnertuition.setAdapter(adapter1);
+        spinnertuition.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        
+        Spinner spinnerregion = (Spinner) findViewById(R.id.spinnerRegion);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+                this, R.array.region_array, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerregion.setAdapter(adapter2);
+        spinnerregion.setOnItemSelectedListener(new MyOnItemSelectedListener());
         
     }
     
@@ -39,9 +56,6 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 
         public void onItemSelected(AdapterView<?> parent,
             View view, int pos, long id) {
-
-          Toast.makeText(parent.getContext(),
-              parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 
           Toast.makeText(parent.getContext(), parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
         }
