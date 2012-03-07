@@ -2,8 +2,6 @@ package mwhs.ap.bkat.app;
 
 import mwhs.ap.doan.app.R;
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
