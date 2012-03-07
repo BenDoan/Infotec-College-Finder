@@ -9,147 +9,133 @@
         android:layout_height="wrap_content"
         android:text="@string/hello" />
 
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-        
-		    <LinearLayout
-		        android:id="@+id/llMajor"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      		
-		    <TextView
-		        android:id="@+id/major1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/major" />
-		
-		    <EditText
-		        android:id="@+id/major2"
-		        android:layout_width="238dp"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		        
-		    </LinearLayout>
-		    
-		    <LinearLayout
-		        android:id="@+id/llSports"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      
-		    <TextView
-		        android:id="@+id/sports1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/sports" />
-		
-		    <EditText
-		        android:id="@+id/sports2"
-		        android:layout_width="238dp"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		        
-		    </LinearLayout>
-		    
-		    <LinearLayout
-		        android:id="@+id/llPopulation"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      
-		    <TextView
-		        android:id="@+id/population1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/population" />
-		
-		    <EditText
-		        android:id="@+id/population2"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		    </LinearLayout>
-		    
-		    <LinearLayout
-		        android:id="@+id/lltuition"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      
-		    <TextView
-		        android:id="@+id/tuition1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/tuition" />
-		
-		    <EditText
-		        android:id="@+id/tuition2"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		    </LinearLayout>
-		    
-		     <LinearLayout
-		        android:id="@+id/llHousing"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      
 
-		    <TextView
-		        android:id="@+id/housing1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/housing" />
-		
+        <LinearLayout
+            android:id="@+id/llMajor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-		    <EditText
-		        android:id="@+id/housing2"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		    </LinearLayout>
-		    
-		     <LinearLayout
-		        android:id="@+id/llRegion"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" >
-		      
+            <TextView
+                android:id="@+id/major1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/major" />
 
-		    <TextView
-		        android:id="@+id/region1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:inputType="text"
-		        android:text="@string/region" />
-		
+            <EditText
+                android:id="@+id/major2"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </LinearLayout>
 
-		    <EditText
-		        android:id="@+id/region2"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:inputType="text" />
-		        
-		    </LinearLayout>
-		    
-		    
-		    
+        <LinearLayout
+            android:id="@+id/llSports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/sports1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/sports" />
+
+            <Spinner
+                android:id="@+id/spinnerSports"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/selectionSports" >
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPopulation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/population1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/population" />
+
+            <EditText
+                android:id="@+id/population2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lltuition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tuition1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/tuition" />
+
+            <Spinner
+                android:id="@+id/spinnerTuition"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/selectionTuition" >
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHousing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/housing1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/housing" />
+
+            <EditText
+                android:id="@+id/housing2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/region1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@string/region" />
+
+            <Spinner
+                android:id="@+id/spinnerRegion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/selectionRegion" >
+            </Spinner>
+        </LinearLayout>
     </LinearLayout>
-	<Spinner
-	    android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/selectionSports">
-	    
-	</Spinner>
+
+    <Button android:id="@+id/search" 
+	  android:text="@string/search"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
 </LinearLayout>

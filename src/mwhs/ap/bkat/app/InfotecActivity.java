@@ -17,7 +17,7 @@ public class InfotecActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerSports);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.sports_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -29,8 +29,11 @@ public class InfotecActivity extends Activity {
 
         public void onItemSelected(AdapterView<?> parent,
             View view, int pos, long id) {
+
           Toast.makeText(parent.getContext(),
               parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+
+          Toast.makeText(parent.getContext(), parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
         }
 
         public void onNothingSelected(AdapterView parent) {
