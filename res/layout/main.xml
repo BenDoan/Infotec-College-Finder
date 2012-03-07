@@ -28,9 +28,14 @@
 
             <EditText
                 android:id="@+id/major2"
-                android:layout_width="238dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:background="#bbb"
+                android:textColor="#000"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -48,7 +53,8 @@
                 android:id="@+id/spinnerSports"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:prompt="@string/selectionSports" >
+                android:prompt="@string/selectionSports"
+                >
             </Spinner>
         </LinearLayout>
 
@@ -67,7 +73,11 @@
                 android:id="@+id/population2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text" 
+                android:background="#bbb"
+                android:textColor="#000"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +114,11 @@
                 android:id="@+id/housing2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text" 
+                android:background="#bbb"
+                android:textColor="#000"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
         <LinearLayout
