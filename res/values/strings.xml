@@ -14,6 +14,7 @@
     <string name="selectionTuition">Tuition Cost</string>
     <string name="selectionRegion">Regions</string>
     <string-array name = "sports_array" >
+        <item >""</item>
         <item >"Soccer"</item>
         <item >"Basketball"</item>
         <item >"Football"</item>
@@ -21,6 +22,7 @@
         <item >"Baseball"</item>
     </string-array>
      <string-array name = "tuition_array" >
+         <item >""</item>
         <item >"$1,000-$10,000"</item>
         <item >"$10,001-$20,000"</item>
         <item >"$20,001-$30,000"</item>
@@ -28,6 +30,7 @@
         <item >"$40,001-$50,000+"</item>
     </string-array>
     <string-array name = "region_array" >
+        <item >""</item>
         <item >"Nebraska"</item>
         <item >"Iowa"</item>
     </string-array>
