@@ -19,7 +19,7 @@ public class SearchResults extends ListActivity {
       super.onCreate(savedInstanceState);
 
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list, SCHOOLS));
-
+      
       ListView lv = getListView();
       lv.setTextFilterEnabled(true);
 
