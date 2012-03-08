@@ -83,12 +83,13 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 	public void onClick(View v) {
 		switch(v.getId()){
 		case R.id.search:{
-			var.add(spinnersport.getSelectedItem().toString());
-			var.add(spinnertuition.getSelectedItem().toString());
-			var.add(spinnerregion.getSelectedItem().toString());
+			var.clear();
 			var.add(mMajorView.getText().toString());
-			var.add(mHouseView.getText().toString());
+			var.add(spinnersport.getSelectedItem().toString());
 			var.add(mPopView.getText().toString());
+			var.add(spinnertuition.getSelectedItem().toString());
+			var.add(mHouseView.getText().toString());
+			var.add(spinnerregion.getSelectedItem().toString());
 			Intent i = new Intent().setClass(this, SearchResults.class);
 			startActivity(i);
 		}
