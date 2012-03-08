@@ -1,7 +1,5 @@
 package mwhs.ap.bkat.app;
 
-
-import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +31,6 @@ public class SearchResults extends ListActivity {
       });
     }
     static final String[] SCHOOLS = new String[] {
-    	"Nebraska", "Iowa", "Stuff"
-      };
+    	
+    };
 }
