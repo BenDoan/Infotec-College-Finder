@@ -13,6 +13,7 @@
     <string name="selectionSports">Sports List</string>
     <string name="selectionTuition">Tuition Cost</string>
     <string name="selectionRegion">Regions</string>
+    <string name="email">Email Results</string>
     <string-array name = "sports_array" >
         <item >""</item>
         <item >"Soccer"</item>

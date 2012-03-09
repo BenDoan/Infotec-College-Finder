@@ -17,12 +17,12 @@ public class SearchResults extends ListActivity {
 	 private ArrayList<School> matchedSchools = new ArrayList<School>();
 	 private String[] matchedInfo;
 	 private String[] info;
-	 private String major;
-	 private String sport;
+	 private String major = " ";
+	 private String sport  = " ";
 	 private int population = 0;
 	 private int cost = 0;
-	 private String housing;
-	 private String region;
+	 private String housing  = " ";
+	 private String region = " ";
 	   /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class SearchResults extends ListActivity {
       }
       
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list,matchedInfo));
-      
+            
       ListView lv = getListView();
       lv.setTextFilterEnabled(true);
       
@@ -78,13 +78,10 @@ public class SearchResults extends ListActivity {
 	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-				if(population == schools.get(i).getTotalUndergrads() &&
+				if(population == schools.get(i).getTotalUndergrads() ||
 				   major.equalsIgnoreCase(schools.get(i).getSchoolType())){
 					matchedSchools.add(schools.get(i));
-				}else{
-					
-				}
-			
+				}			
 		}
 		return matchedSchools;
 		
