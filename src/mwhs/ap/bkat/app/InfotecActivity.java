@@ -101,10 +101,10 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 			file.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		
 	}
