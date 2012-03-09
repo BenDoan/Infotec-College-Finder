@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class InfotecActivity extends Activity implements android.view.View.OnClickListener, Serializable {
 	private Button search;
-	public static ArrayList<School> schools = new ArrayList<School>();
+	private ArrayList<School> schools = new ArrayList<School>();
 	private AdapterView<?> parent1;
 	private ArrayList<String> var = new ArrayList<String>();
 	private String[] vars = new String[6];
@@ -141,8 +141,11 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 			
 			Bundle b = new Bundle();
 			b.putStringArray("strings", vars);
+			Bundle b2 = new Bundle();
+			b2.putParcelableArrayList("schools", schools);
 			Intent i = new Intent();
 			i.putExtras(b);
+			i.putExtras(b2);
 			i.setClass(this, SearchResults.class);
 			startActivity(i);
 		}
