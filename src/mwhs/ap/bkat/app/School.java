@@ -1,6 +1,9 @@
 package mwhs.ap.bkat.app;
 
-public class School {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class School implements Parcelable {
 	private String schoolName;
 	private String schoolType;
 	private String setting;
@@ -48,6 +51,24 @@ public class School {
 
 	public String getRoomAndBoardCost() {
 		return roomAndBoardCost;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(schoolName);
+		dest.writeString(schoolType);
+		dest.writeString(setting);
+		dest.writeString(totalUndergrads);
+		dest.writeString(tuitionInState);
+		dest.writeString(tuitionOutOfState);
+		dest.writeString(roomAndBoardCost);
+		
 	}
 
 }
