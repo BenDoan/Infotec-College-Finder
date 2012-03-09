@@ -4,10 +4,10 @@ public class School {
 	private String schoolName;
 	private String schoolType;
 	private String setting;
-	private String totalUndergrads;
-	private String tuitionInState;
-	private String tuitionOutOfState;
-	private String roomAndBoardCost;
+	private int totalUndergrads;
+	private int tuitionInState;
+	private int tuitionOutOfState;
+	private int roomAndBoardCost;
 	
 	public School(String schoolName, String schoolType, String setting,
 			String totalUndergrads, String tuitionInState,
@@ -16,10 +16,10 @@ public class School {
 			this.schoolName = schoolName;
 			this.schoolType = schoolType;
 			this.setting = setting;
-			this.totalUndergrads = totalUndergrads;
-			this.tuitionInState = tuitionInState;
-			this.tuitionOutOfState = tuitionOutOfState;
-			this.roomAndBoardCost = roomAndBoardCost;
+			this.totalUndergrads = Integer.parseInt(totalUndergrads);
+			this.tuitionInState = Integer.parseInt(tuitionInState);
+			this.tuitionOutOfState = Integer.parseInt(tuitionOutOfState);
+			this.roomAndBoardCost = Integer.parseInt(roomAndBoardCost);
 	}
 
 	public String getSchoolName() {
@@ -34,19 +34,19 @@ public class School {
 		return setting;
 	}
 
-	public String getTotalUndergrads() {
+	public int getTotalUndergrads() {
 		return totalUndergrads;
 	}
 
-	public String getTuitionInState() {
+	public int getTuitionInState() {
 		return tuitionInState;
 	}
 
-	public String getTuitionOutOfState() {
+	public int getTuitionOutOfState() {
 		return tuitionOutOfState;
 	}
 
-	public String getRoomAndBoardCost() {
+	public int getRoomAndBoardCost() {
 		return roomAndBoardCost;
 	}
 
