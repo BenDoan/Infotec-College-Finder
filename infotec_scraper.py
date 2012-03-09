@@ -129,16 +129,15 @@ for x in range(10):
                 data_list.append(between('<li>', '</li>', y))
         #total undergrads
         if is_regex_in_string('undergrads', y):
-            if is_regex_from_list_in_string(['Degree-seeking'], y) is not True:
-                data_list.append(between('<li>', '</li>', y))
+            if is_regex_from_list_in_string(['Degree-seeking'], y) is True:
+                data_list.append(between('<li>Total undergrads: ', '</li>', y))
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=2#')
     for y in r.readlines():
         #in state tuition
         if is_regex_in_string('\$', y):
-            data_list.append(between('<td ><strong>', '</strong></td>', y))
+            data_list.append(between('<td ><strong>$', '</strong></td>', y))
             break
-
-
+    add_to_csv('data.csv', data_list)
     school_list.append(data_list)
 
 for x in school_list:
