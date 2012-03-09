@@ -17,6 +17,12 @@ public class SearchResults extends ListActivity {
 	 private ArrayList<School> matchedSchools = new ArrayList<School>();
 	 private String[] matchedInfo;
 	 private String[] info;
+	 private String major;
+	 private String sport;
+	 private int population = 0;
+	 private int cost = 0;
+	 private String housing;
+	 private String region;
 	   /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,7 @@ public class SearchResults extends ListActivity {
       
       info = b.getStringArray("strings");
       schools = b.getParcelableArrayList("schools");
+      setVariables();
       
       compareValues();
       matchedInfo = new String[matchedSchools.size()];
@@ -47,10 +54,32 @@ public class SearchResults extends ListActivity {
         }
       });
     }
+	private void setVariables() {
+		if (!info[0].equals("")) {
+			major = info[0];
+		}
+		if (!info[1].equals("")) {
+			sport = info[1];
+		}
+		if (!info[2].equals("")) {
+			population = Integer.parseInt(info[2]);
+		}
+		String a = info[3];
+		if (!a.equals("")) {
+			 cost = Integer.parseInt(info[3]);
+		} 
+		if (!info[4].equals("")) {
+			 housing = info[4];
+		}
+		if (!info[5].equals("")) {
+			 region = info[5];
+		}  
+	}
+	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-				if(Integer.parseInt(info[2]) == schools.get(i).getTotalUndergrads() && 
-				   info[0].equals(schools.get(i).getSchoolType())){
+				if(population == schools.get(i).getTotalUndergrads() &&
+				   major.equalsIgnoreCase(schools.get(i).getSchoolType())){
 					matchedSchools.add(schools.get(i));
 				}else{
 					
