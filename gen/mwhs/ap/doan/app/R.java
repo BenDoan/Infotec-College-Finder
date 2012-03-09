@@ -19,6 +19,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int email=0x7f060014;
         public static final int housing1=0x7f06000e;
         public static final int housing2=0x7f06000f;
         public static final int linearLayout2=0x7f060000;
@@ -46,6 +47,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040001;
+        public static final int email=0x7f04000c;
         public static final int hello=0x7f040000;
         public static final int housing=0x7f040006;
         public static final int major=0x7f040002;
