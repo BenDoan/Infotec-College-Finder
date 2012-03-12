@@ -3,14 +3,15 @@ package mwhs.ap.bkat.app;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class SearchResults extends ListActivity {
 	 private ArrayList<School> schools;
@@ -51,6 +52,7 @@ public class SearchResults extends ListActivity {
           // When clicked, show a toast with the TextView text
           Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
               Toast.LENGTH_SHORT).show();
+
         }
       });
     }

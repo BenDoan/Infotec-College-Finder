@@ -3,7 +3,7 @@ package mwhs.ap.bkat.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class School implements Parcelable {
+public class School implements Parcelable{
 	private String schoolName;
 	private String schoolType;
 	private String setting;
@@ -11,10 +11,20 @@ public class School implements Parcelable {
 	private int tuitionInState;
 	private int tuitionOutOfState;
 	private int roomAndBoardCost;
+	private String[] majors;
+	private String[] sports;
 	
+	public String[] getMajors() {
+		return majors;
+	}
+
+	public String[] getSports() {
+		return sports;
+	}
+
 	public School(String schoolName, String schoolType, String setting,
 			String totalUndergrads, String tuitionInState,
-			String tuitionOutOfState, String roomAndBoardCost) {
+			String tuitionOutOfState, String roomAndBoardCost)  {
 		
 			this.schoolName = schoolName;
 			this.schoolType = schoolType;
@@ -33,6 +43,10 @@ public class School implements Parcelable {
 		this.tuitionInState = in.readInt();
 		this.tuitionOutOfState = in.readInt();
 		this.roomAndBoardCost = in.readInt();
+	}
+	
+	public School(){
+		
 	}
 
 	public String getSchoolName() {
@@ -65,11 +79,13 @@ public class School implements Parcelable {
 
 	@Override
 	public int describeContents() {
-		
 		return 0;
 	}
-
-	@Override
+	
+	public String toString(){
+		return "SCHOOL!";
+	}
+	
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(schoolName);
 		dest.writeString(schoolType);
