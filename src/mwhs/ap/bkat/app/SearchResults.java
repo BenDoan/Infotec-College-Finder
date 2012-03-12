@@ -39,9 +39,8 @@ public class SearchResults extends ListActivity {
       for (int i = 0; i < matchedSchools.size(); i++) {
 		matchedInfo[i] = matchedSchools.get(i).getSchoolName();
       }
-      
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list,matchedInfo));
-            
+      
       ListView lv = getListView();
       lv.setTextFilterEnabled(true);
       

@@ -6,6 +6,9 @@ import random
 import datetime
 import csv
 
+NOT_FOUND_MESSAGE = 'Not set'
+
+
 def regex_search(regex, regex_string):
     """does a regex search on 'regex_string' and returns the results
 
@@ -117,12 +120,17 @@ school_list = []
 for x in range(10):
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
+    added_instate_tuition = False
+    added_total_undergrads = False
+    added_school_name = False
+
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&type=adv')
     for y in r.readlines():
         #school name
         if is_regex_in_string('h1',y):
             if is_regex_from_list_in_string(school_name_regex, y):
                 data_list.append(between('<h1>', '</h1>', y))
+                added_school_name = True
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
@@ -131,18 +139,27 @@ for x in range(10):
         if is_regex_in_string('undergrads', y):
             if is_regex_from_list_in_string(['Degree-seeking'], y) is True:
                 data_list.append(between('<li>Total undergrads: ', '</li>', y))
+                added_total_undergrads = True
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=2#')
     for y in r.readlines():
         #in state tuition
         if is_regex_in_string('\$', y):
             data_list.append(between('<td ><strong>$', '</strong></td>', y))
+            added_instate_tuition = True
             break
-    add_to_csv('data.csv', data_list)
-    school_list.append(data_list)
+
+    if added_school_name is True:
+        a = lambda x: data_list.append(x)
+        if added_total_undergrads is False:
+            a(NOT_FOUND_MESSAGE)
+
+        if added_instate_tuition is False:
+            a(NOT_FOUND_MESSAGE)
+
+        add_to_csv('data.csv', data_list)
+        school_list.append(data_list)
 
 for x in school_list:
     for y in x:
         print y
     print '\n'
-
-
