@@ -44,6 +44,13 @@ def is_regex_in_string(regex, regex_string):
     except Exception, e:
         return False;
 
+def is_regex_list_in_string(regex, regex_string):
+    for x in regex:
+        if is_regex_in_string(x, regex_string):
+            return True
+    return False
+
+
 def is_regex_from_list_in_string(regex_list, regex_string):
     for x in regex_list:
         if is_regex_in_string(x, regex_string):
@@ -115,9 +122,62 @@ def setup():
 
 br = mechanize.Browser()
 setup()
+states = [
+    'Alaska',
+    'Alabama',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'Washington D.C.',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming'
+]
 
 school_list = []
-for x in range(10):
+for x in range(7):
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
     added_instate_tuition = False
@@ -131,6 +191,14 @@ for x in range(10):
             if is_regex_from_list_in_string(school_name_regex, y):
                 data_list.append(between('<h1>', '</h1>', y))
                 added_school_name = True
+        #state
+        if is_regex_list_in_string(states, y):
+            if is_regex_in_string('American Indian', y) is False:
+                if is_regex_in_string('Native', y) is False:
+                    if is_regex_in_string('<a href', y) is False:
+                        if is_regex_in_string(r'\d', y) is False:
+                            stripped_text = y.rstrip()
+                            data_list.append(stripped_text)
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
@@ -148,6 +216,7 @@ for x in range(10):
             added_instate_tuition = True
             break
 
+    #majors
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
     major_string = ""
     for y in enumerate(r.readlines()):
@@ -156,7 +225,7 @@ for x in range(10):
                 to_add = between('">', '</a>', y[1])
                 major_string += to_add + '.'
 
-    data_list.append(major_string)
+    data_list.append(major_string[1:-2])
 
 
     if added_school_name is True:
@@ -174,3 +243,4 @@ for x in school_list:
     for y in x:
         print y
     print '\n'
+
