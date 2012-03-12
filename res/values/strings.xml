@@ -14,13 +14,13 @@
     <string name="selectionTuition">Tuition Cost</string>
     <string name="selectionRegion">Regions</string>
     <string name="email">Email Results</string>
-    <string-array name="sports_array">
-        <item>""</item>
-        <item>"Soccer"</item>
-        <item>"Basketball"</item>
-        <item>"Football"</item>
-        <item>"Hockey"</item>
-        <item>"Baseball"</item>
+    <string-array name = "sports_array" >
+        <item >""</item>
+        <item >"Soccer"</item>
+        <item >"Basketball"</item>
+        <item >"Football"</item>
+        <item >"Hockey"</item>
+        <item >"Baseball"</item>
     </string-array>
     <string-array name="tuition_array">
         <item>""</item>

@@ -38,51 +38,51 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Intent i = new Intent().setClass(this, SchoolPage.class);
+//		Intent i = new Intent().setClass(this, SchoolPage.class);
+//		
+//		Bundle bundle = new Bundle();
+//		bundle.putParcelable("school", new School());
+//		i.putExtras(bundle);
+//		startActivity(i);
 		
-		Bundle bundle = new Bundle();
-		bundle.putParcelable("school", new School());
-		i.putExtras(bundle);
-		startActivity(i);
-		
-//		setContentView(R.layout.college);
-//		readCsvValues();
-//
-//		mMajorView = (EditText) findViewById(R.id.major2);
-//		mPopView = (EditText) findViewById(R.id.population2);
-//		mHouseView = (EditText) findViewById(R.id.housing2);
-//
-//		spinnersport = (Spinner) findViewById(R.id.spinnerSports);
-//
-//		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-//				this, R.array.sports_array,
-//				android.R.layout.simple_spinner_item);
-//		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//		search = (Button) findViewById(R.id.search);
-//		search.setOnClickListener(this);
-//
-//		spinnersport.setAdapter(adapter);
-//		spinnersport.setOnItemSelectedListener(new MyOnItemSelectedListener());
-//		Object s = spinnersport.getSelectedItem();
-//		System.out.println(s);
-//
-//		spinnertuition = (Spinner) findViewById(R.id.spinnerTuition);
-//		ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
-//				this, R.array.tuition_array,
-//				android.R.layout.simple_spinner_item);
-//		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//		spinnertuition.setAdapter(adapter1);
-//		spinnertuition
-//				.setOnItemSelectedListener(new MyOnItemSelectedListener());
-//
-//		spinnerregion = (Spinner) findViewById(R.id.spinnerRegion);
-//		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
-//				this, R.array.region_array,
-//				android.R.layout.simple_spinner_item);
-//		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//		spinnerregion.setAdapter(adapter2);
-//		spinnerregion.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		setContentView(R.layout.college);
+		readCsvValues();
+
+		mMajorView = (EditText) findViewById(R.id.major2);
+		mPopView = (EditText) findViewById(R.id.population2);
+		mHouseView = (EditText) findViewById(R.id.housing2);
+
+		spinnersport = (Spinner) findViewById(R.id.spinnerSports);
+
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.sports_array,
+				android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		search = (Button) findViewById(R.id.search);
+		search.setOnClickListener(this);
+
+		spinnersport.setAdapter(adapter);
+		spinnersport.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		Object s = spinnersport.getSelectedItem();
+		System.out.println(s);
+
+		spinnertuition = (Spinner) findViewById(R.id.spinnerTuition);
+		ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+				this, R.array.tuition_array,
+				android.R.layout.simple_spinner_item);
+		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnertuition.setAdapter(adapter1);
+		spinnertuition
+				.setOnItemSelectedListener(new MyOnItemSelectedListener());
+
+		spinnerregion = (Spinner) findViewById(R.id.spinnerRegion);
+		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+				this, R.array.region_array,
+				android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerregion.setAdapter(adapter2);
+		spinnerregion.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 	}
 
