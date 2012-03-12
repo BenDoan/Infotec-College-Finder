@@ -20,9 +20,11 @@ public class SearchResults extends ListActivity {
 	 private String major = " ";
 	 private String sport  = " ";
 	 private int population = 0;
-	 private int cost = 0;
+	 private String cost = " ";
 	 private String housing  = " ";
 	 private String region = " ";
+	 private int minCost;
+	 private int maxCost;
 	   /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,22 @@ public class SearchResults extends ListActivity {
 			population = Integer.parseInt(info[2]);
 		}
 		String a = info[3];
-		if (!a.equals("")) {
-			 cost = Integer.parseInt(info[3]);
-		} 
+		if(a.equals("$1,000-$10,000" )){
+			minCost = 1000;
+			maxCost = 10000;
+		} else if(a.equals("$10,001-$20,000" )){
+			minCost = 10001;
+			maxCost = 20000;			
+		}else if(a.equals("$20,001-$30,000" )){
+			minCost = 20001;
+			maxCost = 30000;
+		}else if(a.equals("$30,001-$40,000" )){
+			minCost = 30001;
+			maxCost = 40000;
+		}else if(a.equals("40,001-$50,000+" )){
+			minCost = 40001;
+			maxCost = Integer.MAX_VALUE;
+		}
 		if (!info[4].equals("")) {
 			 housing = info[4];
 		}
@@ -77,8 +92,10 @@ public class SearchResults extends ListActivity {
 	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-				if(population == schools.get(i).getTotalUndergrads() ||
-				   major.equalsIgnoreCase(schools.get(i).getSchoolType())){
+			int a = ((schools.get(i).getTuitionInState() + schools.get(i).getTuitionOutOfState())/2) + (schools.get(i).getRoomAndBoardCost()/2);
+				if(population == schools.get(i).getTotalUndergrads() || 
+				   major.equalsIgnoreCase(schools.get(i).getSchoolType()) || 
+				   minCost <= a && maxCost >= a){
 					matchedSchools.add(schools.get(i));
 				}			
 		}
