@@ -177,7 +177,7 @@ states = [
 ]
 
 school_list = []
-for x in range(7):
+for x in range(100):
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
     added_instate_tuition = False
@@ -197,7 +197,7 @@ for x in range(7):
                 if is_regex_in_string('Native', y) is False:
                     if is_regex_in_string('<a href', y) is False:
                         if is_regex_in_string(r'\d', y) is False:
-                            stripped_text = y.rstrip()
+                            stripped_text = y.strip()
                             data_list.append(stripped_text)
         #school type
         if is_regex_in_string('<li>', y):
@@ -219,11 +219,10 @@ for x in range(7):
     #majors
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
     major_string = ""
-    for y in enumerate(r.readlines()):
-        if y[0] is not 0 and y[0] is not len(r.readlines()):
-            if is_regex_in_string('major', y[1]):
-                to_add = between('">', '</a>', y[1])
-                major_string += to_add + '.'
+    for y in r.readlines():
+        if is_regex_in_string('major', y):
+            to_add = between('">', '</a>', y)
+            major_string += to_add + '.'
 
     data_list.append(major_string[1:-2])
 
