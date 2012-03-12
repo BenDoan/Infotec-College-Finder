@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
-
 import mwhs.ap.doan.app.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,12 +20,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class InfotecActivity extends Activity implements
-		android.view.View.OnClickListener {
+
+public class InfotecActivity extends Activity implements android.view.View.OnClickListener, Serializable {
 	private Button search;
 	private ArrayList<School> schools = new ArrayList<School>();
 	private AdapterView<?> parent1;
 	private ArrayList<String> var = new ArrayList<String>();
+	private String[] vars = new String[6];
 	private Spinner spinnersport;
 	private Spinner spinnertuition;
 	private Spinner spinnerregion;
@@ -112,10 +113,10 @@ public class InfotecActivity extends Activity implements
 			file.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 	}
@@ -145,7 +146,19 @@ public class InfotecActivity extends Activity implements
 			var.add(spinnertuition.getSelectedItem().toString());
 			var.add(mHouseView.getText().toString());
 			var.add(spinnerregion.getSelectedItem().toString());
-			Intent i = new Intent().setClass(this, SearchResults.class);
+			
+			for (int i = 0; i < var.size(); i++) {
+				vars[i] = var.get(i);
+			}
+			
+			Bundle b = new Bundle();
+			b.putStringArray("strings", vars);
+			Bundle b2 = new Bundle();
+			b2.putParcelableArrayList("schools", schools);
+			Intent i = new Intent();
+			i.putExtras(b);
+			i.putExtras(b2);
+			i.setClass(this, SearchResults.class);
 			startActivity(i);
 		}
 		}
@@ -156,5 +169,4 @@ public class InfotecActivity extends Activity implements
 		return var;
 
 	}
-
 }

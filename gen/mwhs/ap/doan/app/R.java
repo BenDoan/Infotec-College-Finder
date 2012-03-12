@@ -65,22 +65,23 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040001;
+        public static final int email=0x7f04000c;
         public static final int hello=0x7f040000;
         public static final int housing=0x7f040006;
-        public static final int housing_label=0x7f04000d;
-        public static final int location_label=0x7f04000f;
+        public static final int housing_label=0x7f04000e;
+        public static final int location_label=0x7f040010;
         public static final int major=0x7f040002;
-        public static final int majors=0x7f040010;
-        public static final int no_data=0x7f040011;
+        public static final int majors=0x7f040011;
+        public static final int no_data=0x7f040012;
         public static final int population=0x7f040004;
         public static final int region=0x7f040007;
         public static final int search=0x7f040008;
         public static final int selectionRegion=0x7f04000b;
         public static final int selectionSports=0x7f040009;
         public static final int selectionTuition=0x7f04000a;
-        public static final int size_label=0x7f04000e;
+        public static final int size_label=0x7f04000f;
         public static final int sports=0x7f040003;
         public static final int tuition=0x7f040005;
-        public static final int tuition_label=0x7f04000c;
+        public static final int tuition_label=0x7f04000d;
     }
 }

@@ -6,6 +6,9 @@ import random
 import datetime
 import csv
 
+NOT_FOUND_MESSAGE = 'Not set'
+
+
 def regex_search(regex, regex_string):
     """does a regex search on 'regex_string' and returns the results
 
@@ -40,6 +43,12 @@ def is_regex_in_string(regex, regex_string):
         return True;
     except Exception, e:
         return False;
+
+def is_regex_from_list_in_string(regex_list, regex_string):
+    for x in regex_list:
+        if is_regex_in_string(x, regex_string):
+            return False
+    return True
 
 def between(left,right,s):
     """searches for text between left and right
@@ -107,11 +116,61 @@ def setup():
 br = mechanize.Browser()
 setup()
 
-r = br.open('http://collegesearch.collegeboard.com/search/adv_typeofschool.jsp')
-print r.read()
+school_list = []
+for x in range(10):
+    data_list = []
+    school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
+    added_instate_tuition = False
+    added_total_undergrads = False
+    added_school_name = False
 
-form.find_control(name="csca_WestStates", kind="list").value = ["0"]
-form.find_control(name="csca_MidWestStates", kind="list").value = ["0"]
-form.find_control(name="csca_SouthStates", kind="list").value = ["0"]
-form.find_control(name="csca_NewEngland", kind="list").value = ["0"]
-form.find_control(name="csca_SouthWestStates", kind="list").value = ["0"]
+    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&type=adv')
+    for y in r.readlines():
+        #school name
+        if is_regex_in_string('h1',y):
+            if is_regex_from_list_in_string(school_name_regex, y):
+                data_list.append(between('<h1>', '</h1>', y))
+                added_school_name = True
+        #school type
+        if is_regex_in_string('<li>', y):
+            if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
+                data_list.append(between('<li>', '</li>', y))
+        #total undergrads
+        if is_regex_in_string('undergrads', y):
+            if is_regex_from_list_in_string(['Degree-seeking'], y) is True:
+                data_list.append(between('<li>Total undergrads: ', '</li>', y))
+                added_total_undergrads = True
+    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=2#')
+    for y in r.readlines():
+        #in state tuition
+        if is_regex_in_string('\$', y):
+            data_list.append(between('<td ><strong>$', '</strong></td>', y))
+            added_instate_tuition = True
+            break
+
+    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
+    major_string = ""
+    for y in enumerate(r.readlines()):
+        if y[0] is not 0 and y[0] is not len(r.readlines()):
+            if is_regex_in_string('major', y[1]):
+                to_add = between('">', '</a>', y[1])
+                major_string += to_add + '.'
+
+    data_list.append(major_string)
+
+
+    if added_school_name is True:
+        a = lambda x: data_list.append(x)
+        if added_total_undergrads is False:
+            a(NOT_FOUND_MESSAGE)
+
+        if added_instate_tuition is False:
+            a(NOT_FOUND_MESSAGE)
+
+        add_to_csv('data.csv', data_list)
+        school_list.append(data_list)
+
+for x in school_list:
+    for y in x:
+        print y
+    print '\n'

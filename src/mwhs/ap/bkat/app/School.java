@@ -7,10 +7,10 @@ public class School implements Parcelable{
 	private String schoolName;
 	private String schoolType;
 	private String setting;
-	private String totalUndergrads;
-	private String tuitionInState;
-	private String tuitionOutOfState;
-	private String roomAndBoardCost;
+	private int totalUndergrads;
+	private int tuitionInState;
+	private int tuitionOutOfState;
+	private int roomAndBoardCost;
 	private String[] majors;
 	private String[] sports;
 	
@@ -29,10 +29,20 @@ public class School implements Parcelable{
 			this.schoolName = schoolName;
 			this.schoolType = schoolType;
 			this.setting = setting;
-			this.totalUndergrads = totalUndergrads;
-			this.tuitionInState = tuitionInState;
-			this.tuitionOutOfState = tuitionOutOfState;
-			this.roomAndBoardCost = roomAndBoardCost;
+			this.totalUndergrads = Integer.parseInt(totalUndergrads);
+			this.tuitionInState = Integer.parseInt(tuitionInState);
+			this.tuitionOutOfState = Integer.parseInt(tuitionOutOfState);
+			this.roomAndBoardCost = Integer.parseInt(roomAndBoardCost);
+	}
+
+	public School(Parcel in) {
+		this.schoolName = in.readString();
+		this.schoolType = in.readString();
+		this.setting = in.readString();
+		this.totalUndergrads = in.readInt();
+		this.tuitionInState = in.readInt();
+		this.tuitionOutOfState = in.readInt();
+		this.roomAndBoardCost = in.readInt();
 	}
 	
 	public School(){
@@ -51,35 +61,52 @@ public class School implements Parcelable{
 		return setting;
 	}
 
-	public String getTotalUndergrads() {
+	public int getTotalUndergrads() {
 		return totalUndergrads;
 	}
 
-	public String getTuitionInState() {
+	public int getTuitionInState() {
 		return tuitionInState;
 	}
 
-	public String getTuitionOutOfState() {
+	public int getTuitionOutOfState() {
 		return tuitionOutOfState;
 	}
 
-	public String getRoomAndBoardCost() {
+	public int getRoomAndBoardCost() {
 		return roomAndBoardCost;
 	}
 
 	@Override
 	public int describeContents() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public void writeToParcel(Parcel arg0, int arg1) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	public String toString(){
 		return "SCHOOL!";
 	}
-
+	
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(schoolName);
+		dest.writeString(schoolType);
+		dest.writeString(setting);
+		dest.writeInt(totalUndergrads);
+		dest.writeInt(tuitionInState);
+		dest.writeInt(tuitionOutOfState);
+		dest.writeInt(roomAndBoardCost);
+		
+	}
+	   public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+	        public School createFromParcel(Parcel in)
+	        {
+	            return new School(in);
+	        }
+	 
+	        public School[] newArray(int size)
+	        {
+	            return new School[size];
+	        }
+	    };
+	
 }
+
