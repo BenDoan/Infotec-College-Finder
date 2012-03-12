@@ -19,7 +19,6 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int email=0x7f060014;
         public static final int housing1=0x7f06000e;
         public static final int housing2=0x7f06000f;
         public static final int linearLayout2=0x7f060000;
