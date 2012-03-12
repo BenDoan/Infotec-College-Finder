@@ -148,6 +148,17 @@ for x in range(10):
             added_instate_tuition = True
             break
 
+    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
+    major_string = ""
+    for y in enumerate(r.readlines()):
+        if y[0] is not 0 and y[0] is not len(r.readlines()):
+            if is_regex_in_string('major', y[1]):
+                to_add = between('">', '</a>', y[1])
+                major_string += to_add + '.'
+
+    data_list.append(major_string)
+
+
     if added_school_name is True:
         a = lambda x: data_list.append(x)
         if added_total_undergrads is False:
