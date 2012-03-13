@@ -7,7 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 10
+NUMER_OF_SCHOOLS = 100
 
 
 def regex_search(regex, regex_string):
@@ -208,13 +208,17 @@ for x in range(NUMER_OF_SCHOOLS):
                                                 stripped_text = y.strip()
                                                 data_list.append(stripped_text)
                                                 added_state = True
-        if added_school_name:
+        if added_school_name is True:
             if added_state is not True:
                 data_list.append(NOT_FOUND_MESSAGE)
+
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
-                data_list.append(between('<li>', '</li>', y))
+                if is_regex_in_string('Office', y):
+                    if is_regex_in_string('Campus', y):
+                        data_list.append(between('<li>', '</li>', y))
+
         #total undergrads
         if is_regex_in_string('undergrads', y):
             if is_regex_from_list_in_string(['Degree-seeking'], y) is True:
