@@ -7,6 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
+NUMER_OF_SCHOOLS = 100
 
 
 def regex_search(regex, regex_string):
@@ -43,6 +44,13 @@ def is_regex_in_string(regex, regex_string):
         return True;
     except Exception, e:
         return False;
+
+def is_regex_list_in_string(regex, regex_string):
+    for x in regex:
+        if is_regex_in_string(x, regex_string):
+            return True
+    return False
+
 
 def is_regex_from_list_in_string(regex_list, regex_string):
     for x in regex_list:
@@ -115,9 +123,62 @@ def setup():
 
 br = mechanize.Browser()
 setup()
+states = [
+    'Alaska',
+    'Alabama',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'Washington D.C.',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming'
+]
 
 school_list = []
-for x in range(10):
+for x in range(NUMER_OF_SCHOOLS):
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
     added_instate_tuition = False
@@ -129,8 +190,20 @@ for x in range(10):
         #school name
         if is_regex_in_string('h1',y):
             if is_regex_from_list_in_string(school_name_regex, y):
-                data_list.append(between('<h1>', '</h1>', y))
-                added_school_name = True
+                if is_regex_in_string('<title', y) is not True:
+                    data_list.append(between('<h1>', '</h1>', y))
+                    added_school_name = True
+        #state
+        if is_regex_list_in_string(states, y):
+            if is_regex_in_string('American Indian', y) is False:
+                if is_regex_in_string('Native', y) is False:
+                    if is_regex_in_string('<a href', y) is False:
+                        if is_regex_in_string(r'\d', y) is False:
+                            if is_regex_in_string(r'<title', y) is False:
+                                if is_regex_in_string('<meta', y) is not True:
+                                    if is_regex_in_string('<strong>', y) is not True:
+                                        stripped_text = y.strip()
+                                        data_list.append(stripped_text)
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
@@ -148,29 +221,32 @@ for x in range(10):
             added_instate_tuition = True
             break
 
-    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
-    major_string = ""
-    for y in enumerate(r.readlines()):
-        if y[0] is not 0 and y[0] is not len(r.readlines()):
-            if is_regex_in_string('major', y[1]):
-                to_add = between('">', '</a>', y[1])
-                major_string += to_add + '.'
-
-    data_list.append(major_string)
-
-
     if added_school_name is True:
-        a = lambda x: data_list.append(x)
         if added_total_undergrads is False:
-            a(NOT_FOUND_MESSAGE)
+            data_list.append(NOT_FOUND_MESSAGE)
 
         if added_instate_tuition is False:
-            a(NOT_FOUND_MESSAGE)
+            data_list.append(NOT_FOUND_MESSAGE)
 
+    #majors
+    r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
+    major_string = ""
+    for y in r.readlines():
+        if is_regex_in_string('major', y):
+            to_add = between('">', '</a>', y)
+            major_string += to_add + '.'
+
+    data_list.append(major_string[2:-1])
+
+    if added_school_name is True:
         add_to_csv('data.csv', data_list)
         school_list.append(data_list)
+
+
+
 
 for x in school_list:
     for y in x:
         print y
     print '\n'
+

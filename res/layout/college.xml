@@ -30,19 +30,10 @@
             android:layout_height="match_parent"
             android:layout_alignBottom="@+id/curr_college"
             android:layout_alignParentRight="true"
-            android:textOff="Favorite"
-            android:textOn="Favorited"
-            android:textSize="15px" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/curr_college"
-            android:layout_alignParentLeft="true"
             android:textOff="@string/email"
             android:textOn="Emailed"
             android:textSize="15px" />
+
     </RelativeLayout>
 
     <RelativeLayout

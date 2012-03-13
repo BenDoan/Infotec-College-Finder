@@ -5,14 +5,17 @@
     <string name="app_name">College Finder</string>
     <string name="major">Major</string>
     <string name="sports">Sports</string>
-    <string name="population">School Population</string>
+    <string name="population">Total Undergrads</string>
     <string name="tuition">Cost</string>
     <string name="housing">Housing</string>
-    <string name="region">Region</string>
+    <string name="region">State</string>
     <string name="search">Search</string>
+    <string name="setting">Setting</string>
+    <string name="selectionSetting">Setting List</string>
     <string name="selectionSports">Sports List</string>
     <string name="selectionTuition">Tuition Cost</string>
     <string name="selectionRegion">Regions</string>
+    <string name="selectionPop">Total Undergrads</string>
     <string name="email">Email Results</string>
 
     <string-array name="sports_array">
@@ -23,6 +26,12 @@
         <item>"Hockey"</item>
         <item>"Baseball"</item>
     </string-array>
+    <string-array name = "setting_array" >
+        <item >""</item>
+        <item >"Suburban setting"</item>
+        <item >"Rural setting"</item>
+        <item >"Urban setting"</item>
+    </string-array>
     <string-array name="tuition_array">
         <item>""</item>
         <item>"$1,000-$10,000"</item>
@@ -31,10 +40,72 @@
         <item>"$30,001-$40,000"</item>
         <item>"$40,001-$50,000+"</item>
     </string-array>
+    <string-array name="pop_array">
+        <item>""</item>
+        <item>"1-1,000"</item>
+        <item>"1,001-5,000"</item>
+        <item>"5,001-10,000"</item>
+        <item>"10,001-15,000"</item>
+        <item>"15,001-20,000"</item>
+        <item>"20,001-25,000"</item>
+        <item>"25,001-30,000"</item>
+        <item>"30,001-35,000"</item>
+        <item>"35,001-40,000"</item>
+        <item>"40,001-45,000"</item>
+        <item>"45,001-50,000+"</item>
+    </string-array>
     <string-array name="region_array">
         <item>""</item>
-        <item>"Nebraska"</item>
+        <item>"Alabama"</item>
+        <item>"Alaska"</item>
+        <item>"Arizona"</item>
+        <item>"Arkansas"</item>
+        <item>"California"</item>
+        <item>"Colorado"</item>
+        <item>"Connecticut"</item>
+        <item>"Delaware"</item>
+        <item>"Florida"</item>
+        <item>"Georgia"</item>
+        <item>"Hawaii"</item>
+        <item>"Idaho"</item>
+        <item>"Illinois"</item>
+        <item>"Indiana"</item>
         <item>"Iowa"</item>
+        <item>"Kansas"</item>
+        <item>"Kentucky"</item>
+        <item>"Louisiana"</item>
+        <item>"Maine"</item>
+        <item>"Maryland"</item>
+        <item>"Massachusetts"</item>
+        <item>"Michigan"</item>
+        <item>"Minnesota"</item>
+        <item>"Mississippi"</item>
+        <item>"Misouri"</item>
+        <item>"Montana"</item>
+        <item>"Nebraska"</item>
+        <item>"Nevada"</item>
+        <item>"New Hampshire"</item>
+        <item>"New Jersey"</item>
+        <item>"New Mexico"</item>
+        <item>"New York"</item>
+        <item>"North Carolina"</item>
+        <item>"North Dakota"</item>
+        <item>"Ohio"</item>
+        <item>"Oklahoma"</item>
+        <item>"Oregan"</item>
+        <item>"Pennsylvania"</item>
+        <item>"Rhode Island"</item>
+        <item>"South Carolina"</item>
+        <item>"South Dakota"</item>
+        <item>"Tennessee"</item>
+        <item>"Texas"</item>
+        <item>"Utah"</item>
+        <item>"Vermont"</item>
+        <item>"Virginia"</item>
+        <item>"Washington"</item>
+        <item>"West Virginia"</item>
+        <item>"Wisconsin"</item>
+        <item>"Wyoming"</item>
     </string-array>
 
     <string name="in_tuition_label">In State Tuition:</string>

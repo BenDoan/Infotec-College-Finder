@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+     >
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -16,6 +17,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/llMajor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -25,23 +27,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/major" />
-
+
             <EditText
                 android:id="@+id/major2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:background="#bbb"
-                android:textColor="#000"
-                android:paddingLeft="5dp"
                 android:layout_marginLeft="5dp"
-                />
+                android:background="#bbb"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                 />
+
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/llSports"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/sports1"
@@ -50,40 +54,49 @@
                 android:text="@string/sports" />
 
             <Spinner
+                android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerSports"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="#bbb"
                 android:prompt="@string/selectionSports"
-                >
-            </Spinner>
+                android:textColor="#fff" />
+
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/llPopulation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" >
 
             <TextView
                 android:id="@+id/population1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/population" />
-
-            <EditText
-                android:id="@+id/population2"
-                android:layout_width="match_parent"
+            
+            <Spinner
+                android:layout_marginLeft="5dp"
+                android:id="@+id/spinnerPop"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" 
                 android:background="#bbb"
-                android:textColor="#000"
-                android:paddingLeft="5dp"
-                android:layout_marginLeft="5dp"/>
+                android:prompt="@string/selectionPop"
+                android:textColor="#fff" >
+
+            </Spinner>
+
+            
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/lltuition"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/tuition1"
@@ -92,17 +105,22 @@
                 android:text="@string/tuition" />
 
             <Spinner
+                android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerTuition"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:prompt="@string/selectionTuition" >
+                android:prompt="@string/selectionTuition"
+                android:background="#bbb"
+                android:textColor="#fff" >
             </Spinner>
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/llHousing"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/housing1"
@@ -116,15 +134,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="text" 
                 android:background="#bbb"
-                android:textColor="#000"
                 android:paddingLeft="5dp"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/llRegion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/region1"
@@ -133,12 +152,40 @@
                 android:text="@string/region" />
 
             <Spinner
+                android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerRegion"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:prompt="@string/selectionRegion" >
+                android:prompt="@string/selectionRegion"
+                android:background="#bbb"
+                android:textColor="#fff" >
             </Spinner>
         </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/llSetting"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/setting1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting" />
+
+            <Spinner
+                android:layout_marginLeft="5dp"
+                android:id="@+id/spinnerSetting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/selectionSetting"
+                android:background="#bbb"
+                android:textColor="#000">
+            </Spinner>
+        </LinearLayout>
+        
     </LinearLayout>
 
     <Button android:id="@+id/search" 
