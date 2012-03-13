@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name="mwhs.ap.bkat.app.SearchResults" >
-            </activity>
+        </activity>
+        <activity android:name="mwhs.ap.bkat.app.SchoolPage" >
+        </activity>
     </application>
 
 </manifest>

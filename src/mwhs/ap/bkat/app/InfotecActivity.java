@@ -13,6 +13,7 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -21,8 +22,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class InfotecActivity extends Activity implements
-		android.view.View.OnClickListener, Serializable {
+
+public class InfotecActivity extends Activity implements OnClickListener, Serializable {
 	private Button search;
 	private ArrayList<School> schools = new ArrayList<School>();
 	private AdapterView<?> parent1;
@@ -40,6 +41,15 @@ public class InfotecActivity extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+//		Intent i = new Intent().setClass(this, SchoolPage.class);
+//		
+//		Bundle bundle = new Bundle();
+//		bundle.putParcelable("school", new School());
+//		i.putExtras(bundle);
+//		startActivity(i);
+		
+		//setContentView(R.layout.college);
+
 		readCsvValues();
 
 		mMajorView = (EditText) findViewById(R.id.major2);
@@ -112,7 +122,7 @@ public class InfotecActivity extends Activity implements
 			// TODO Auto-generated catch block
 
 		}
-
+  
 	}
 
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
@@ -155,19 +165,19 @@ public class InfotecActivity extends Activity implements
 			 i.setClass(this, SearchResults.class);
 			 startActivity(i);
 
-			Intent i2 = new Intent(Intent.ACTION_SENDTO);
-			i2.setType("text/plain");
-			i2.putExtra(Intent.EXTRA_EMAIL,
-					new String[] { "recipient@example.com" });
-			i2.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-			i2.putExtra(Intent.EXTRA_TEXT, "body of email");
-			try {
-				startActivity(Intent.createChooser(i2, "Send mail..."));
-			} catch (android.content.ActivityNotFoundException ex) {
-				Toast.makeText(InfotecActivity.this,
-						"There are no email clients installed.",
-						Toast.LENGTH_SHORT).show();
-			}
+//			Intent i2 = new Intent(Intent.ACTION_SENDTO);
+//			i2.setType("text/plain");
+//			i2.putExtra(Intent.EXTRA_EMAIL,
+//					new String[] { "recipient@example.com" });
+//			i2.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+//			i2.putExtra(Intent.EXTRA_TEXT, "body of email");
+//			try {
+//				startActivity(Intent.createChooser(i2, "Send mail..."));
+//			} catch (android.content.ActivityNotFoundException ex) {
+//				Toast.makeText(InfotecActivity.this,
+//						"There are no email clients installed.",
+//						Toast.LENGTH_SHORT).show();
+//			}
 
 			}
 		}
