@@ -89,7 +89,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
 				this, R.array.pop_array,
 				android.R.layout.simple_spinner_item);
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerTU.setAdapter(adapter3);
 		spinnerTU.setOnItemSelectedListener(new MyOnItemSelectedListener());
 		
@@ -97,7 +97,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(
 				this, R.array.setting_array,
 				android.R.layout.simple_spinner_item);
-		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerSetting.setAdapter(adapter4);
 		spinnerSetting.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
