@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -21,10 +22,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-public class InfotecActivity extends Activity implements android.view.View.OnClickListener, Serializable {
+public class InfotecActivity extends Activity implements OnClickListener, Serializable {
 	private Button search;
 	private ArrayList<School> schools = new ArrayList<School>();
-	private AdapterView<?> parent1;
 	private ArrayList<String> var = new ArrayList<String>();
 	private String[] vars = new String[6];
 	private Spinner spinnersport;
@@ -38,14 +38,16 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 //		Intent i = new Intent().setClass(this, SchoolPage.class);
 //		
 //		Bundle bundle = new Bundle();
 //		bundle.putParcelable("school", new School());
 //		i.putExtras(bundle);
 //		startActivity(i);
-		
-		setContentView(R.layout.college);
+//		
+//		setContentView(R.layout.college);
+
 		readCsvValues();
 
 		mMajorView = (EditText) findViewById(R.id.major2);
@@ -125,9 +127,9 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 
 		public void onItemSelected(AdapterView<?> parent, View view, int pos,
 				long id) {
-			Toast.makeText(parent.getContext(),
-					parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG)
-					.show();
+		//	Toast.makeText(parent.getContext(),
+			//		parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG)
+				//	.show();
 		}
 
 		public void onNothingSelected(AdapterView parent) {
