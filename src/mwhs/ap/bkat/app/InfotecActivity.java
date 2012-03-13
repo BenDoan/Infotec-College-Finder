@@ -10,6 +10,7 @@ import mwhs.ap.doan.app.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,8 +47,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 //		bundle.putParcelable("school", new School());
 //		i.putExtras(bundle);
 //		startActivity(i);
-//		
-//		setContentView(R.layout.college);
+
 
 		readCsvValues();
 
@@ -131,12 +131,12 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			file.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-		
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			
-		}
 
+		}
+  
 	}
 
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
@@ -165,21 +165,24 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			var.add(mHouseView.getText().toString());
 			var.add(spinnerregion.getSelectedItem().toString());
 			var.add(spinnerSetting.getSelectedItem().toString());
-			
+
 			for (int i = 0; i < var.size(); i++) {
 				vars[i] = var.get(i);
 			}
-			
-			Bundle b = new Bundle();
-			b.putStringArray("strings", vars);
-			Bundle b2 = new Bundle();
-			b2.putParcelableArrayList("schools", schools);
-			Intent i = new Intent();
-			i.putExtras(b);
-			i.putExtras(b2);
-			i.setClass(this, SearchResults.class);
-			startActivity(i);
-		}
+
+			 Bundle b = new Bundle();
+			 b.putStringArray("strings", vars);
+			 Bundle b2 = new Bundle();
+			 b2.putParcelableArrayList("schools", schools);
+			 Intent i = new Intent();
+			 i.putExtras(b);
+			 i.putExtras(b2);
+			 i.setClass(this, SearchResults.class);
+			 startActivity(i);
+
+
+
+			}
 		}
 
 	}

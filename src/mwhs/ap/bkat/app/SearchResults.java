@@ -64,7 +64,7 @@ public class SearchResults extends ListActivity {
         	Bundle b = new Bundle();
 			b.putString("schoolPicked", matchedInfo[position]);
 			Bundle b2 = new Bundle();
-			b2.putParcelable("schoolList", schools.get(position));
+			b2.putParcelableArrayList("schoolList", schools);
 			Intent i = new Intent();
 			i.putExtras(b);
 			i.putExtras(b2);
