@@ -110,9 +110,10 @@
 
     <string name="in_tuition_label">In State Tuition:</string>
     <string name="out_tuition_label">Out of State Tuition:</string>
-    <string name="housing_label">Housing:</string>
+    <string name="housing_label">Room and Board Cost:</string>
     <string name="size_label">Undergraduate Population:</string>
     <string name="location_label">Location:</string>
+    <string name="setting_label">Setting:</string>
     <string name="majors">Majors</string>
     <string name="no_data">No Information is Available</string>
 

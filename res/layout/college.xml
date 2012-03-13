@@ -23,17 +23,31 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/curr_college"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right" />
 
         <ToggleButton
             android:id="@+id/toggleButton1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/curr_college"
-            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignBottom="@+id/textView3"
             android:textOff="@string/email"
             android:textOn="Emailed"
             android:textSize="15px" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -51,6 +65,26 @@
 
         <TextView
             android:id="@+id/curr_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="right"
+            android:text="@string/setting_label" />
+
+        <TextView
+            android:id="@+id/curr_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true" />
@@ -102,15 +136,15 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/size"
+            android:id="@+id/housing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="right"
-            android:text="@string/size_label" />
+            android:text="@string/housing_label" />
 
         <TextView
-            android:id="@+id/curr_size"
+            android:id="@+id/curr_housing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true" />
@@ -122,15 +156,15 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/housing"
+            android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_gravity="right"
-            android:text="@string/housing_label" />
+            android:text="@string/size_label" />
 
         <TextView
-            android:id="@+id/curr_housing"
+            android:id="@+id/curr_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true" />
@@ -167,41 +201,6 @@
 
     <ListView
         android:id="@+id/list_majors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/sports"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="right" />
-
-        <TextView
-            android:id="@+id/sports"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/sports" />
-
-        <TextView
-            android:id="@+id/list_sports:empty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sports"
-            android:layout_centerHorizontal="true"
-            android:text="@string/no_data" />
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/list_sports"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
