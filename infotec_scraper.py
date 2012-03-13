@@ -7,6 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
+NUMER_OF_SCHOOLS = 100
 
 
 def regex_search(regex, regex_string):
@@ -177,7 +178,7 @@ states = [
 ]
 
 school_list = []
-for x in range(100):
+for x in range(NUMER_OF_SCHOOLS):
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
     added_instate_tuition = False
@@ -189,16 +190,20 @@ for x in range(100):
         #school name
         if is_regex_in_string('h1',y):
             if is_regex_from_list_in_string(school_name_regex, y):
-                data_list.append(between('<h1>', '</h1>', y))
-                added_school_name = True
+                if is_regex_in_string('<title', y) is not True:
+                    data_list.append(between('<h1>', '</h1>', y))
+                    added_school_name = True
         #state
         if is_regex_list_in_string(states, y):
             if is_regex_in_string('American Indian', y) is False:
                 if is_regex_in_string('Native', y) is False:
                     if is_regex_in_string('<a href', y) is False:
                         if is_regex_in_string(r'\d', y) is False:
-                            stripped_text = y.strip()
-                            data_list.append(stripped_text)
+                            if is_regex_in_string(r'<title', y) is False:
+                                if is_regex_in_string('<meta', y) is not True:
+                                    if is_regex_in_string('<strong>', y) is not True:
+                                        stripped_text = y.strip()
+                                        data_list.append(stripped_text)
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
@@ -216,6 +221,13 @@ for x in range(100):
             added_instate_tuition = True
             break
 
+    if added_school_name is True:
+        if added_total_undergrads is False:
+            data_list.append(NOT_FOUND_MESSAGE)
+
+        if added_instate_tuition is False:
+            data_list.append(NOT_FOUND_MESSAGE)
+
     #majors
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
     major_string = ""
@@ -224,19 +236,14 @@ for x in range(100):
             to_add = between('">', '</a>', y)
             major_string += to_add + '.'
 
-    data_list.append(major_string[1:-2])
-
+    data_list.append(major_string[2:-1])
 
     if added_school_name is True:
-        a = lambda x: data_list.append(x)
-        if added_total_undergrads is False:
-            a(NOT_FOUND_MESSAGE)
-
-        if added_instate_tuition is False:
-            a(NOT_FOUND_MESSAGE)
-
         add_to_csv('data.csv', data_list)
         school_list.append(data_list)
+
+
+
 
 for x in school_list:
     for y in x:
