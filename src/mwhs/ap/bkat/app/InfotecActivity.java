@@ -41,7 +41,7 @@ public class InfotecActivity extends Activity implements android.view.View.OnCli
 		Intent i = new Intent().setClass(this, SchoolPage.class);
 		
 		Bundle bundle = new Bundle();
-		bundle.putParcelable("school", new School());
+		bundle.putParcelable("school", new School("Millard West","Liberal Arts", "Urban", "100", "200","300", "50"));
 		i.putExtras(bundle);
 		startActivity(i);
 		
