@@ -25,7 +25,7 @@ public class SchoolPage extends Activity implements OnClickListener {
 		setContentView(R.layout.college);
 		
 		Bundle b = this.getIntent().getExtras();
-		School s = (School) b.get("school");
+		 s = (School) b.get("school");
 		
 		setTextViews(s);
 		
@@ -96,12 +96,12 @@ public class SchoolPage extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.toggleButton1:
-			Intent i2 = new Intent(Intent.ACTION_SENDTO);
+			Intent i2 = new Intent(Intent.ACTION_SEND);
 			i2.setType("text/plain");
 			i2.putExtra(Intent.EXTRA_EMAIL,
 					new String[] { "recipient@example.com" });
-			i2.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-			i2.putExtra(Intent.EXTRA_TEXT, "body of email");
+			i2.putExtra(Intent.EXTRA_SUBJECT, "Search Results");
+			i2.putExtra(Intent.EXTRA_TEXT, "Name: " + s.getSchoolName());
 			try {
 				startActivity(Intent.createChooser(i2, "Send mail..."));
 			} catch (android.content.ActivityNotFoundException ex) {
