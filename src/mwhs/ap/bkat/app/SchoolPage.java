@@ -23,17 +23,64 @@ public class SchoolPage extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.college);
+		
 		Bundle b = this.getIntent().getExtras();
+		School s = (School) b.get("school");
+		
+		setTextViews(s);
+		
+		String[] majors = new String[2];
+		majors[0]= "Computer Science";
+		majors[1]= "Math";		
+		s.setMajors(majors);
+		
+		String[] sports = new String[2];
+		sports[0]= "Hockey";
+		sports[1]= "Football";		
+		s.setSports(sports);
+		
+		
+		ListView m_listview = (ListView) findViewById(R.id.list_majors);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, s.getMajors());
+		m_listview.setAdapter(adapter);
 
-		String info = b.getString("schoolPicked");
-		ArrayList<School> schools = b.getParcelableArrayList("schoolList");
-		for (int i = 0; i < schools.size(); i++) {
-			if (schools.get(i).getSchoolName().equals(info)) {
-				s = schools.get(i);
-			}
-		}
-		TextView currCollege = (TextView) findViewById(R.id.curr_college);
-		currCollege.setText(s.getSchoolName());
+		ListView s_listview2 = (ListView) findViewById(R.id.list_sports);
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, s.getSports());
+		s_listview2.setAdapter(adapter2);
+	}
+	
+	private void setTextViews(School curr){
+		TextView college = (TextView) findViewById(R.id.curr_college);
+		college.setText(curr.getSchoolName());
+		
+		TextView setting = (TextView) findViewById(R.id.curr_location);
+		setting.setText(curr.getSetting());
+		
+		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
+		inTuition.setText("" + curr.getTuitionInState());
+		
+		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
+		outTuition.setText("" + curr.getTuitionOutOfState());
+		
+		TextView size = (TextView) findViewById(R.id.curr_size);
+		size.setText("" + curr.getTotalUndergrads());
+		
+		TextView housing = (TextView) findViewById(R.id.curr_housing);
+		housing.setText("" + curr.getRoomAndBoardCost());
+
+//		Bundle b = this.getIntent().getExtras();
+//
+//		String info = b.getString("schoolPicked");
+//		ArrayList<School> schools = b.getParcelableArrayList("schoolList");
+//		for (int i = 0; i < schools.size(); i++) {
+//			if (schools.get(i).getSchoolName().equals(info)) {
+//				s = schools.get(i);
+//			}
+//		}
+//		TextView currCollege = (TextView) findViewById(R.id.curr_college);
+//		currCollege.setText(s.getSchoolName());
 		
 		email = (Button) findViewById(R.id.toggleButton1);
 		email.setOnClickListener(this);

@@ -18,6 +18,14 @@ public class School implements Parcelable{
 		return majors;
 	}
 
+	public void setMajors(String[] majors) {
+		this.majors = majors;
+	}
+
+	public void setSports(String[] sports) {
+		this.sports = sports;
+	}
+
 	public String[] getSports() {
 		return sports;
 	}
@@ -83,7 +91,7 @@ public class School implements Parcelable{
 	}
 	
 	public String toString(){
-		return "SCHOOL!";
+		return schoolName;
 	}
 	
 	public void writeToParcel(Parcel dest, int flags) {

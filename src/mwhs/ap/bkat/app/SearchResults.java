@@ -57,21 +57,31 @@ public class SearchResults extends ListActivity {
       lv.setOnItemClickListener(new OnItemClickListener() {
         public void onItemClick(AdapterView<?> parent, View view,
             int position, long id) {
-          // When clicked, show a toast with the TextView text
-//          Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-//              Toast.LENGTH_SHORT).show();
           
-        	Bundle b = new Bundle();
-			b.putString("schoolPicked", matchedInfo[position]);
-			Bundle b2 = new Bundle();
-			b2.putParcelableArrayList("schoolList", schools);
+//        	Bundle b = new Bundle();
+//			b.putString("schoolPicked", matchedInfo[position]);
+//			Bundle b2 = new Bundle();
+//			b2.putParcelableArrayList("schoolList", schools);
 			Intent i = new Intent();
-			i.putExtras(b);
-			i.putExtras(b2);
+//			i.putExtras(b);
+//			i.putExtras(b2);
 			i.setClass(getApplicationContext(), SchoolPage.class);
-			startActivity(i);
-          
-
+//			startActivity(i);
+			
+			String name = matchedInfo[position];
+			
+			School s=null;
+			for (int j = 0; j < schools.size(); j++) {
+				if (schools.get(j).getSchoolName().equals(name)) {
+					s = schools.get(j);
+				}
+			}
+			if(s != null){
+				Bundle bundle = new Bundle();
+				bundle.putParcelable("school", s);
+				i.putExtras(bundle);
+				startActivity(i);
+			}
         }
       });
     }

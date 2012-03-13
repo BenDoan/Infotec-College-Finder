@@ -17,13 +17,14 @@
     <string name="selectionRegion">Regions</string>
     <string name="selectionPop">Total Undergrads</string>
     <string name="email">Email Results</string>
-    <string-array name = "sports_array" >
-        <item >""</item>
-        <item >"Soccer"</item>
-        <item >"Basketball"</item>
-        <item >"Football"</item>
-        <item >"Hockey"</item>
-        <item >"Baseball"</item>
+
+    <string-array name="sports_array">
+        <item>""</item>
+        <item>"Soccer"</item>
+        <item>"Basketball"</item>
+        <item>"Football"</item>
+        <item>"Hockey"</item>
+        <item>"Baseball"</item>
     </string-array>
     <string-array name = "setting_array" >
         <item >""</item>
@@ -107,9 +108,10 @@
         <item>"Wyoming"</item>
     </string-array>
 
-    <string name="tuition_label">Tuition:</string>
+    <string name="in_tuition_label">In State Tuition:</string>
+    <string name="out_tuition_label">Out of State Tuition:</string>
     <string name="housing_label">Housing:</string>
-    <string name="size_label">Size:</string>
+    <string name="size_label">Undergraduate Population:</string>
     <string name="location_label">Location:</string>
     <string name="majors">Majors</string>
     <string name="no_data">No Information is Available</string>

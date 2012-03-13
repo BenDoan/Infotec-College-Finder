@@ -41,14 +41,13 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-//		Intent i = new Intent().setClass(this, SchoolPage.class);
-//		
+
+//		WHEN SENDING TO COLLEGE PAGE, BUNDLE THIS WAY!
 //		Bundle bundle = new Bundle();
-//		bundle.putParcelable("school", new School());
+//		bundle.putParcelable("school", new School("Millard West","Liberal Arts", "Urban", "100", "200","300", "50"));
 //		i.putExtras(bundle);
 //		startActivity(i);
-
-
+		
 		readCsvValues();
 
 		mMajorView = (EditText) findViewById(R.id.major2);
