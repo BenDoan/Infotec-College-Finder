@@ -7,7 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 100
+NUMER_OF_SCHOOLS = 10
 
 
 def regex_search(regex, regex_string):
@@ -246,7 +246,4 @@ for x in range(NUMER_OF_SCHOOLS):
 
 
 for x in school_list:
-    for y in x:
-        print y
-    print '\n'
-
+    print x[1]
