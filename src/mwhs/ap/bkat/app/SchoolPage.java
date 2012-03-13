@@ -23,33 +23,58 @@ public class SchoolPage extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.college);
+		
 		Bundle b = this.getIntent().getExtras();
+		s = (School) b.get("school");
+		
+		setTextViews();
+		
+		String[] majors = new String[2];
+		majors[0]= "Computer Science";
+		majors[1]= "Math";		
+		s.setMajors(majors);
+		
+		String[] sports = new String[2];
+		sports[0]= "Hockey";
+		sports[1]= "Football";		
+		s.setSports(sports);
+		
+		
+		ListView m_listview = (ListView) findViewById(R.id.list_majors);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, s.getMajors());
+		m_listview.setAdapter(adapter);
 
-		String info = b.getString("schoolPicked");
-		ArrayList<School> schools = b.getParcelableArrayList("schoolList");
-		for (int i = 0; i < schools.size(); i++) {
-			if (schools.get(i).getSchoolName().equals(info)) {
-				s = schools.get(i);
-			}
-		}
-		TextView currCollege = (TextView) findViewById(R.id.curr_college);
-		currCollege.setText(s.getSchoolName());
+	}
+	
+	private void setTextViews(){
+		TextView college = (TextView) findViewById(R.id.curr_college);
+		college.setText(s.getSchoolName());
+		
+		TextView setting = (TextView) findViewById(R.id.curr_setting);
+		setting.setText(s.getSetting());
+		
+		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
+		inTuition.setText("" + s.getTuitionInState());
+		
+		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
+		outTuition.setText("" + s.getTuitionOutOfState());
+		
+		TextView size = (TextView) findViewById(R.id.curr_size);
+		size.setText("" + s.getTotalUndergrads());
+		
+		TextView housing = (TextView) findViewById(R.id.curr_housing);
+		housing.setText("" + s.getRoomAndBoardCost());
 		
 		email = (Button) findViewById(R.id.toggleButton1);
 		email.setOnClickListener(this);
-		// Toast.makeText(getApplicationContext(), s.toString(),
-		// Toast.LENGTH_LONG);
-		// setListAdapter(new ArrayAdapter<String>(this,
-		// mwhs.ap.doan.app.R.id.list_majors, s.getMajors()));
-		// setListAdapter(new ArrayAdapter<String>(this,
-		// mwhs.ap.doan.app.R.id.list_sports, s.getSports()));
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.toggleButton1:
-			Intent i2 = new Intent(Intent.ACTION_SENDTO);
+			Intent i2 = new Intent(Intent.ACTION_SEND);
 			i2.setType("text/plain");
 			i2.putExtra(Intent.EXTRA_EMAIL,
 					new String[] { "recipient@example.com" });
