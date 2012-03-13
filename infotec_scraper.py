@@ -7,7 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 100
+NUMER_OF_SCHOOLS = 10
 
 
 def regex_search(regex, regex_string):
@@ -185,6 +185,8 @@ for x in range(NUMER_OF_SCHOOLS):
     added_total_undergrads = False
     added_school_name = False
     added_state = False
+    #state_regex = ['American Indian', 'Native', '<a href', '\d', '<title', '<meta', 'strong', 'City', 'Baptist']
+    state_regex = ['American Indian', 'Native', '<a href', '\d', '<title']
 
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&type=adv')
     for y in r.readlines():
@@ -196,21 +198,14 @@ for x in range(NUMER_OF_SCHOOLS):
                     added_school_name = True
         #state
         if is_regex_list_in_string(states, y):
-            if is_regex_in_string('American Indian', y) is False:
-                if is_regex_in_string('Native', y) is False:
-                    if is_regex_in_string('<a href', y) is False:
-                        if is_regex_in_string(r'\d', y) is False:
-                            if is_regex_in_string(r'<title', y) is False:
-                                if is_regex_in_string('<meta', y) is not True:
-                                    if is_regex_in_string('<strong>', y) is not True:
-                                        if is_regex_in_string('City', y) is not True:
-                                            if is_regex_in_string('Baptist', y) is not True:
-                                                stripped_text = y.strip()
-                                                data_list.append(stripped_text)
-                                                added_state = True
-        if added_school_name is True:
+            if is_regex_list_in_string(state_regex, y) is not True:
+                stripped_text = y.strip()
+                data_list.append(stripped_text)
+                added_state = True
+
+        if added_school_name:
             if added_state is not True:
-                data_list.append(NOT_FOUND_MESSAGE)
+                data_list.append("asdadasd")
 
         #school type
         if is_regex_in_string('<li>', y):
@@ -258,3 +253,5 @@ for x in range(NUMER_OF_SCHOOLS):
 
 for x in school_list:
     print x[1]
+print added_state
+print added_school_name
