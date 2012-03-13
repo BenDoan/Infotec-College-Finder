@@ -26,12 +26,13 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 	private Button search;
 	private ArrayList<School> schools = new ArrayList<School>();
 	private ArrayList<String> var = new ArrayList<String>();
-	private String[] vars = new String[6];
+	private String[] vars = new String[7];
 	private Spinner spinnersport;
 	private Spinner spinnertuition;
 	private Spinner spinnerregion;
+	private Spinner spinnerTU;
+	private Spinner spinnerSetting;
 	private EditText mMajorView;
-	private EditText mPopView;
 	private EditText mHouseView;
 
 	/** Called when the activity is first created. */
@@ -51,7 +52,6 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		readCsvValues();
 
 		mMajorView = (EditText) findViewById(R.id.major2);
-		mPopView = (EditText) findViewById(R.id.population2);
 		mHouseView = (EditText) findViewById(R.id.housing2);
 
 		spinnersport = (Spinner) findViewById(R.id.spinnerSports);
@@ -85,6 +85,22 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerregion.setAdapter(adapter2);
 		spinnerregion.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		
+		spinnerTU = (Spinner) findViewById(R.id.spinnerPop);
+		ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
+				this, R.array.pop_array,
+				android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerTU.setAdapter(adapter3);
+		spinnerTU.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		
+		spinnerSetting = (Spinner) findViewById(R.id.spinnerSetting);
+		ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(
+				this, R.array.setting_array,
+				android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerSetting.setAdapter(adapter4);
+		spinnerSetting.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 	}
 
@@ -144,10 +160,11 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			var.clear();
 			var.add(mMajorView.getText().toString());
 			var.add(spinnersport.getSelectedItem().toString());
-			var.add(mPopView.getText().toString());
+			var.add(spinnerTU.getSelectedItem().toString());
 			var.add(spinnertuition.getSelectedItem().toString());
 			var.add(mHouseView.getText().toString());
 			var.add(spinnerregion.getSelectedItem().toString());
+			var.add(spinnerSetting.getSelectedItem().toString());
 			
 			for (int i = 0; i < var.size(); i++) {
 				vars[i] = var.get(i);

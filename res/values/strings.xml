@@ -5,14 +5,17 @@
     <string name="app_name">College Finder</string>
     <string name="major">Major</string>
     <string name="sports">Sports</string>
-    <string name="population">School Population</string>
+    <string name="population">Total Undergrads</string>
     <string name="tuition">Cost</string>
     <string name="housing">Housing</string>
-    <string name="region">Region</string>
+    <string name="region">State</string>
     <string name="search">Search</string>
+    <string name="setting">Setting</string>
+    <string name="selectionSetting">Setting List</string>
     <string name="selectionSports">Sports List</string>
     <string name="selectionTuition">Tuition Cost</string>
     <string name="selectionRegion">Regions</string>
+    <string name="selectionPop">Total Undergrads</string>
     <string name="email">Email Results</string>
     <string-array name = "sports_array" >
         <item >""</item>
@@ -22,6 +25,12 @@
         <item >"Hockey"</item>
         <item >"Baseball"</item>
     </string-array>
+    <string-array name = "setting_array" >
+        <item >""</item>
+        <item >"Suburban setting"</item>
+        <item >"Rural setting"</item>
+        <item >"Urban setting"</item>
+    </string-array>
     <string-array name="tuition_array">
         <item>""</item>
         <item>"$1,000-$10,000"</item>
@@ -29,6 +38,20 @@
         <item>"$20,001-$30,000"</item>
         <item>"$30,001-$40,000"</item>
         <item>"$40,001-$50,000+"</item>
+    </string-array>
+    <string-array name="pop_array">
+        <item>""</item>
+        <item>"1-1,000"</item>
+        <item>"1,001-5,000"</item>
+        <item>"5,001-10,000"</item>
+        <item>"10,001-15,000"</item>
+        <item>"15,001-20,000"</item>
+        <item>"20,001-25,000"</item>
+        <item>"25,001-30,000"</item>
+        <item>"30,001-35,000"</item>
+        <item>"35,001-40,000"</item>
+        <item>"40,001-45,000"</item>
+        <item>"45,001-50,000+"</item>
     </string-array>
     <string-array name="region_array">
         <item>""</item>
