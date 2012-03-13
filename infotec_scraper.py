@@ -7,7 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 100
+NUMER_OF_SCHOOLS = 10
 
 
 def regex_search(regex, regex_string):
@@ -184,6 +184,7 @@ for x in range(NUMER_OF_SCHOOLS):
     added_instate_tuition = False
     added_total_undergrads = False
     added_school_name = False
+    added_state = False
 
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&type=adv')
     for y in r.readlines():
@@ -202,8 +203,14 @@ for x in range(NUMER_OF_SCHOOLS):
                             if is_regex_in_string(r'<title', y) is False:
                                 if is_regex_in_string('<meta', y) is not True:
                                     if is_regex_in_string('<strong>', y) is not True:
-                                        stripped_text = y.strip()
-                                        data_list.append(stripped_text)
+                                        if is_regex_in_string('City', y) is not True:
+                                            if is_regex_in_string('Baptist', y) is not True:
+                                                stripped_text = y.strip()
+                                                data_list.append(stripped_text)
+                                                added_state = True
+        if added_school_name:
+            if added_state is not True:
+                data_list.append(NOT_FOUND_MESSAGE)
         #school type
         if is_regex_in_string('<li>', y):
             if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
@@ -246,7 +253,4 @@ for x in range(NUMER_OF_SCHOOLS):
 
 
 for x in school_list:
-    for y in x:
-        print y
-    print '\n'
-
+    print x[1]
