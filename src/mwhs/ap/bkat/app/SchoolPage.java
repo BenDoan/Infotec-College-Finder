@@ -96,7 +96,7 @@ public class SchoolPage extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.toggleButton1:
-			Intent i2 = new Intent(Intent.ACTION_SENDTO);
+			Intent i2 = new Intent(Intent.ACTION_SEND);
 			i2.setType("text/plain");
 			i2.putExtra(Intent.EXTRA_EMAIL,
 					new String[] { "recipient@example.com" });

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llMajor"
             android:layout_width="match_parent"
@@ -27,20 +27,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/major" />
-
+
             <EditText
                 android:id="@+id/major2"
-                android:layout_width="match_parent"
+                android:layout_width="205dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_alignParentRight="true"
                 android:background="#bbb"
                 android:inputType="text"
-                android:paddingLeft="5dp"
-                 />
+                android:paddingLeft="5dp" />
 
-        </LinearLayout>
+		</RelativeLayout>      
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llSports"
             android:layout_width="match_parent"
@@ -54,17 +53,18 @@
                 android:text="@string/sports" />
 
             <Spinner
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerSports"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="#bbb"
                 android:prompt="@string/selectionSports"
                 android:textColor="#fff" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llPopulation"
             android:layout_width="match_parent"
@@ -80,7 +80,8 @@
             <Spinner
                 android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerPop"
-                android:layout_width="210dp"
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="wrap_content"
                 android:background="#bbb"
                 android:prompt="@string/selectionPop"
@@ -89,9 +90,9 @@
             </Spinner>
 
             
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/lltuition"
             android:layout_width="match_parent"
@@ -107,15 +108,15 @@
             <Spinner
                 android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerTuition"
-                android:layout_width="fill_parent"
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="wrap_content"
                 android:prompt="@string/selectionTuition"
                 android:background="#bbb"
                 android:textColor="#fff" >
             </Spinner>
-        </LinearLayout>
-
-        <LinearLayout
+        </RelativeLayout>
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llHousing"
             android:layout_width="match_parent"
@@ -130,15 +131,16 @@
 
             <EditText
                 android:id="@+id/housing2"
-                android:layout_width="match_parent"
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="wrap_content"
                 android:inputType="text" 
                 android:background="#bbb"
                 android:paddingLeft="5dp"
                 android:layout_marginLeft="5dp"/>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llRegion"
             android:layout_width="match_parent"
@@ -154,15 +156,16 @@
             <Spinner
                 android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerRegion"
-                android:layout_width="fill_parent"
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="wrap_content"
                 android:prompt="@string/selectionRegion"
                 android:background="#bbb"
                 android:textColor="#fff" >
             </Spinner>
-        </LinearLayout>
+        </RelativeLayout>
         
-        <LinearLayout
+        <RelativeLayout
             android:orientation="horizontal"
             android:id="@+id/llSetting"
             android:layout_width="fill_parent"
@@ -178,13 +181,14 @@
             <Spinner
                 android:layout_marginLeft="5dp"
                 android:id="@+id/spinnerSetting"
-                android:layout_width="fill_parent"
+                android:layout_width="205dp"
+                android:layout_alignParentRight="true"
                 android:layout_height="wrap_content"
                 android:prompt="@string/selectionSetting"
                 android:background="#bbb"
                 android:textColor="#000">
             </Spinner>
-        </LinearLayout>
+        </RelativeLayout>
         
     </LinearLayout>
 
