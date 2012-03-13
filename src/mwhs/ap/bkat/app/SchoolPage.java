@@ -25,9 +25,9 @@ public class SchoolPage extends Activity implements OnClickListener {
 		setContentView(R.layout.college);
 		
 		Bundle b = this.getIntent().getExtras();
-		School s = (School) b.get("school");
+		s = (School) b.get("school");
 		
-		setTextViews(s);
+		setTextViews();
 		
 		String[] majors = new String[2];
 		majors[0]= "Computer Science";
@@ -45,51 +45,29 @@ public class SchoolPage extends Activity implements OnClickListener {
 				android.R.layout.simple_list_item_1, s.getMajors());
 		m_listview.setAdapter(adapter);
 
-		ListView s_listview2 = (ListView) findViewById(R.id.list_sports);
-		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, s.getSports());
-		s_listview2.setAdapter(adapter2);
 	}
 	
-	private void setTextViews(School curr){
+	private void setTextViews(){
 		TextView college = (TextView) findViewById(R.id.curr_college);
-		college.setText(curr.getSchoolName());
+		college.setText(s.getSchoolName());
 		
-		TextView setting = (TextView) findViewById(R.id.curr_location);
-		setting.setText(curr.getSetting());
+		TextView setting = (TextView) findViewById(R.id.curr_setting);
+		setting.setText(s.getSetting());
 		
 		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
-		inTuition.setText("" + curr.getTuitionInState());
+		inTuition.setText("" + s.getTuitionInState());
 		
 		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
-		outTuition.setText("" + curr.getTuitionOutOfState());
+		outTuition.setText("" + s.getTuitionOutOfState());
 		
 		TextView size = (TextView) findViewById(R.id.curr_size);
-		size.setText("" + curr.getTotalUndergrads());
+		size.setText("" + s.getTotalUndergrads());
 		
 		TextView housing = (TextView) findViewById(R.id.curr_housing);
-		housing.setText("" + curr.getRoomAndBoardCost());
-
-//		Bundle b = this.getIntent().getExtras();
-//
-//		String info = b.getString("schoolPicked");
-//		ArrayList<School> schools = b.getParcelableArrayList("schoolList");
-//		for (int i = 0; i < schools.size(); i++) {
-//			if (schools.get(i).getSchoolName().equals(info)) {
-//				s = schools.get(i);
-//			}
-//		}
-//		TextView currCollege = (TextView) findViewById(R.id.curr_college);
-//		currCollege.setText(s.getSchoolName());
+		housing.setText("" + s.getRoomAndBoardCost());
 		
 		email = (Button) findViewById(R.id.toggleButton1);
 		email.setOnClickListener(this);
-		// Toast.makeText(getApplicationContext(), s.toString(),
-		// Toast.LENGTH_LONG);
-		// setListAdapter(new ArrayAdapter<String>(this,
-		// mwhs.ap.doan.app.R.id.list_majors, s.getMajors()));
-		// setListAdapter(new ArrayAdapter<String>(this,
-		// mwhs.ap.doan.app.R.id.list_sports, s.getSports()));
 	}
 
 	@Override
