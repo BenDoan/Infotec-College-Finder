@@ -163,19 +163,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			 i.setClass(this, SearchResults.class);
 			 startActivity(i);
 
-//			Intent i2 = new Intent(Intent.ACTION_SENDTO);
-//			i2.setType("text/plain");
-//			i2.putExtra(Intent.EXTRA_EMAIL,
-//					new String[] { "recipient@example.com" });
-//			i2.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-//			i2.putExtra(Intent.EXTRA_TEXT, "body of email");
-//			try {
-//				startActivity(Intent.createChooser(i2, "Send mail..."));
-//			} catch (android.content.ActivityNotFoundException ex) {
-//				Toast.makeText(InfotecActivity.this,
-//						"There are no email clients installed.",
-//						Toast.LENGTH_SHORT).show();
-//			}
+
 
 			}
 		}
