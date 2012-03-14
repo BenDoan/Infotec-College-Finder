@@ -13,7 +13,16 @@ public class School implements Parcelable{
 	private int roomAndBoardCost;
 	private String[] majors;
 	private String[] sports;
+	private String location;
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	public String[] getMajors() {
 		return majors;
 	}
