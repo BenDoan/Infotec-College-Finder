@@ -7,7 +7,8 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 3499
+#NUMER_OF_SCHOOLS = 3499
+NUMER_OF_SCHOOLS = 50
 
 
 def regex_search(regex, regex_string):
@@ -186,16 +187,11 @@ states = [
 
 school_list = []
 for x in range(NUMER_OF_SCHOOLS):
-    school_name = ""
-    school_state = ""
-    school_type = ""
-    school_total_undergrads = ""
-    school_instate_tuition = ""
-    school_majors = ""
+    school_name, school_state, school_type, school_total_undergrads, school_instate_tuition, school_majors = ["","","","","",""]
 
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
-    state_regex = ['American Indian', 'Native', 'meta', 'apps', 'Street', 'University', 'college', '\d', 'office']
+    state_regex = ['American Indian', 'Native', 'meta', 'apps', 'Street', 'University', 'college', '\d', 'office', '<', '<', 'campus', 'nbsp']
     #state_regex = ['American Indian', 'Native', '<a href', '\d', '<title', '<meta', 'strong', 'City', 'Baptist']
     type_regex = ['Office', 'Campus', '<li>']
 
@@ -237,20 +233,21 @@ for x in range(NUMER_OF_SCHOOLS):
     for y in r.readlines():
         if is_regex_in_string('major', y):
             to_add = between('">', '</a>', y)
-            school_majors += to_add + '.'
+            school_majors += to_add + '|'
     school_majors = school_majors[2:-1]
 
     if school_name is not "":
-        data_list.append(school_name)
+        if school_state is "Nebraska":
+            data_list.append(school_name)
 
-        data_list.append(check_data_var(school_state, ""))
-        data_list.append(check_data_var(school_type, ""))
-        data_list.append(check_data_var(school_total_undergrads, ""))
-        data_list.append(check_data_var(school_instate_tuition, ""))
-        data_list.append(check_data_var(school_majors, ""))
+            data_list.append(check_data_var(school_state, ""))
+            data_list.append(check_data_var(school_type, ""))
+            data_list.append(check_data_var(school_total_undergrads, ""))
+            data_list.append(check_data_var(school_instate_tuition, ""))
+            data_list.append(check_data_var(school_majors, ""))
 
-        add_to_csv('data.csv', data_list)
-        school_list.append(data_list)
+            add_to_csv('data.csv', data_list)
+            school_list.append(data_list)
 
 
 for x in school_list:
