@@ -45,6 +45,7 @@ public class School implements Parcelable{
 	}
 
 	public School(Parcel in) {
+		//String[] majors2 = new String[majors.length];
 		this.schoolName = in.readString();
 		this.state = in.readString();
 		this.setting = in.readString();
@@ -52,7 +53,8 @@ public class School implements Parcelable{
 		this.tuitionInState = in.readInt();
 		//this.tuitionOutOfState = in.readInt();
 		//this.roomAndBoardCost = in.readInt();
-		//this.majors = in.readStringArray(in.));
+		this.majors = in.createStringArray();
+		
 	}
 	
 	public School(){
@@ -119,7 +121,7 @@ public class School implements Parcelable{
 		dest.writeInt(tuitionInState);
 		//dest.writeInt(tuitionOutOfState);
 		//dest.writeInt(roomAndBoardCost);
-		dest.writeArray(majors);
+		dest.writeStringArray(majors);
 		
 	}
 	   public String getState() {

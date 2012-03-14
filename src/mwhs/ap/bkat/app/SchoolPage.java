@@ -33,7 +33,7 @@ public class SchoolPage extends Activity implements OnClickListener {
 		String[] majors = new String[2];
 		majors[0]= "Computer Science";
 		majors[1]= "Math";		
-		s.setMajors(majors);
+		//s.setMajors(majors);
 		
 		String[] sports = new String[2];
 		sports[0]= "Hockey";

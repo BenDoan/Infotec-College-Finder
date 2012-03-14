@@ -28,6 +28,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 	private ArrayList<School> schools = new ArrayList<School>();
 	private ArrayList<String> var = new ArrayList<String>();
 	private String[] vars = new String[7];
+	private String[] majors;
 	private Spinner spinnersport;
 	private Spinner spinnertuition;
 	private Spinner spinnerregion;
@@ -109,7 +110,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 
 		try {
 			file = new BufferedReader(new InputStreamReader(
-					assetManager.open("data.csv")));
+					assetManager.open("sample.csv")));
 			String line;
 			file.readLine();
 			while ((line = file.readLine()) != null) {
@@ -119,7 +120,8 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 				String setting = lineParts[2];
 				String totalUndergrads = lineParts[3];
 				String tuitionInState = lineParts[4];
-				String[] majors = lineParts[5].split(".");
+				String majorsString = lineParts[5];
+				majors = majorsString.split("\\.");
 				//String tuitionOutOfState = lineParts[5];
 				//String roomAndBoardCost = lineParts[6];
 
