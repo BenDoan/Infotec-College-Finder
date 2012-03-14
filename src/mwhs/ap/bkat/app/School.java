@@ -5,23 +5,14 @@ import android.os.Parcelable;
 
 public class School implements Parcelable{
 	private String schoolName;
-	private String schoolType;
 	private String setting;
+	private String state;
 	private int totalUndergrads;
 	private int tuitionInState;
 	private int tuitionOutOfState;
 	private int roomAndBoardCost;
 	private String[] majors;
 	private String[] sports;
-	private String location;
-	
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
 
 	public String[] getMajors() {
 		return majors;
@@ -39,13 +30,13 @@ public class School implements Parcelable{
 		return sports;
 	}
 
-	public School(String schoolName, String schoolType, String setting,
+	public School(String schoolName, String setting,
 			String totalUndergrads, String tuitionInState,
-			String tuitionOutOfState, String roomAndBoardCost)  {
+			String tuitionOutOfState, String roomAndBoardCost, String state)  {
 		
 			this.schoolName = schoolName;
-			this.schoolType = schoolType;
 			this.setting = setting;
+			this.state = state;
 			this.totalUndergrads = Integer.parseInt(totalUndergrads);
 			this.tuitionInState = Integer.parseInt(tuitionInState);
 			this.tuitionOutOfState = Integer.parseInt(tuitionOutOfState);
@@ -53,25 +44,43 @@ public class School implements Parcelable{
 	}
 
 	public School(Parcel in) {
+		//String[] majors2 = new String[majors.length];
 		this.schoolName = in.readString();
-		this.schoolType = in.readString();
+		this.state = in.readString();
 		this.setting = in.readString();
 		this.totalUndergrads = in.readInt();
 		this.tuitionInState = in.readInt();
-		this.tuitionOutOfState = in.readInt();
-		this.roomAndBoardCost = in.readInt();
+		//this.tuitionOutOfState = in.readInt();
+		//this.roomAndBoardCost = in.readInt();
+		this.majors = in.createStringArray();
+		
 	}
 	
 	public School(){
 		
 	}
 
-	public String getSchoolName() {
-		return schoolName;
+	public School(String schoolName2, String setting2, String state2,
+			String totalUndergrads2, String tuitionInState2, String[] majors2) {
+		this.schoolName = schoolName2;
+		this.setting = setting2;
+		this.state = state2;
+		if(!totalUndergrads2.equals("Not set")){
+			this.totalUndergrads = Integer.parseInt(totalUndergrads2);
+		}else{
+			this.totalUndergrads = 0;
+		}
+		if(!tuitionInState2.equals("Not set")){
+			this.tuitionInState = Integer.parseInt(tuitionInState2);
+		}else{
+			this.tuitionInState = 0;
+		}
+		
+		this.majors = majors2;
 	}
 
-	public String getSchoolType() {
-		return schoolType;
+	public String getSchoolName() {
+		return schoolName;
 	}
 
 	public String getSetting() {
@@ -105,15 +114,19 @@ public class School implements Parcelable{
 	
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(schoolName);
-		dest.writeString(schoolType);
+		dest.writeString(state);
 		dest.writeString(setting);
 		dest.writeInt(totalUndergrads);
 		dest.writeInt(tuitionInState);
-		dest.writeInt(tuitionOutOfState);
-		dest.writeInt(roomAndBoardCost);
+		//dest.writeInt(tuitionOutOfState);
+		//dest.writeInt(roomAndBoardCost);
+		dest.writeStringArray(majors);
 		
 	}
-	   public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+	   public String getState() {
+		return state;
+	}
+	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
 	        public School createFromParcel(Parcel in)
 	        {
 	            return new School(in);

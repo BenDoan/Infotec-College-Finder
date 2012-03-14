@@ -161,8 +161,7 @@ public class SearchResults extends ListActivity {
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
 			int a = ((schools.get(i).getTuitionInState() + schools.get(i).getTuitionOutOfState())/2) + (schools.get(i).getRoomAndBoardCost()/2);
-				if(minPop <= schools.get(i).getTotalUndergrads() && maxPop >= schools.get(i).getTotalUndergrads() || 
-				   major.equalsIgnoreCase(schools.get(i).getSchoolType()) || 
+				if(minPop <= schools.get(i).getTotalUndergrads() && maxPop >= schools.get(i).getTotalUndergrads() ||
 				   minCost <= a && maxCost >= a){
 					matchedSchools.add(schools.get(i));
 				}			

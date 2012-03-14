@@ -79,6 +79,7 @@ public final class R {
         public static final int location_label=0x7f040014;
         public static final int major=0x7f040002;
         public static final int majors=0x7f040016;
+        public static final int na=0x7f040018;
         public static final int no_data=0x7f040017;
         public static final int out_tuition_label=0x7f040011;
         public static final int population=0x7f040004;

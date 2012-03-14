@@ -28,6 +28,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 	private ArrayList<School> schools = new ArrayList<School>();
 	private ArrayList<String> var = new ArrayList<String>();
 	private String[] vars = new String[7];
+	private String[] majors;
 	private Spinner spinnersport;
 	private Spinner spinnertuition;
 	private Spinner spinnerregion;
@@ -115,16 +116,19 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			while ((line = file.readLine()) != null) {
 				String[] lineParts = line.split(",");
 				String schoolName = lineParts[0];
-				String schoolType = lineParts[1];
+				String state = lineParts[1];
 				String setting = lineParts[2];
 				String totalUndergrads = lineParts[3];
 				String tuitionInState = lineParts[4];
-				String tuitionOutOfState = lineParts[5];
-				String roomAndBoardCost = lineParts[6];
+				String majorsString = lineParts[5];
+				majors = majorsString.split("\\.");
+				//String tuitionOutOfState = lineParts[5];
+				//String roomAndBoardCost = lineParts[6];
 
-				School s = new School(schoolName, schoolType, setting,
-						totalUndergrads, tuitionInState, tuitionOutOfState,
-						roomAndBoardCost);
+				School s = new School(schoolName, setting,	state,
+						totalUndergrads, tuitionInState, /*tuitionOutOfState*/majors
+						/*roomAndBoardCost*/);
+				
 				schools.add(s);
 			}
 			file.close();

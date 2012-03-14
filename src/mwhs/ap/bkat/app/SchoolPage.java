@@ -28,12 +28,15 @@ public class SchoolPage extends Activity implements OnClickListener {
 		setContentView(R.layout.college);
 
 		Bundle b = this.getIntent().getExtras();
+
 		s = (School) b.get("school");
 
 		setTextViews();
-		
+
 		setMajors();
 
+		email = (Button) findViewById(R.id.toggleButton1);
+		email.setOnClickListener(this);
 	}
 
 	private void setTextViews() {
@@ -42,39 +45,54 @@ public class SchoolPage extends Activity implements OnClickListener {
 		college.setText(s.getSchoolName());
 
 		TextView setting = (TextView) findViewById(R.id.curr_setting);
-		setting.setText(s.getSetting());
-		
-		s.setLocation("NEBRASKA");
+		if (s.getSetting().equalsIgnoreCase("Not set")) {
+			setting.setText(R.string.na);
+		} else {
+			setting.setText(s.getSetting());
+		}
+
 		TextView location = (TextView) findViewById(R.id.curr_location);
-		location.setText(s.getLocation());
+		if (s.getState().equalsIgnoreCase("Not set")) {
+			location.setText(R.string.na);
+		} else {
+			location.setText(s.getState());
+		}
 
 		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
-		inTuition.setText("" + currency.format(s.getTuitionInState()));
+		if (s.getTuitionInState() == 0) {
+			inTuition.setText((R.string.na));
+		} else {
+			inTuition.setText("" + currency.format(s.getTuitionInState()));
+		}
 
 		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
-		outTuition.setText("" + currency.format(s.getTuitionOutOfState()));
+		if (s.getTuitionOutOfState() == 0) {
+			outTuition.setText((R.string.na));
+		} else {
+			outTuition.setText("" + currency.format(s.getTuitionOutOfState()));
+		}
 
 		TextView size = (TextView) findViewById(R.id.curr_size);
-		size.setText("" + s.getTotalUndergrads());
+		if (s.getTotalUndergrads() == 0) {
+			size.setText((R.string.na));
+		} else {
+			size.setText("" + s.getTotalUndergrads());
+		}
 
 		TextView housing = (TextView) findViewById(R.id.curr_housing);
-		housing.setText("" + currency.format(s.getRoomAndBoardCost()));
-
-		email = (Button) findViewById(R.id.toggleButton1);
-		email.setOnClickListener(this);
+		if (s.getRoomAndBoardCost()== 0) {
+			housing.setText((R.string.na));
+		} else {
+			housing.setText("" + currency.format(s.getRoomAndBoardCost()));
+		}
 	}
 
 	public void setMajors() {
 		View noData = findViewById(R.id.list_majors_empty);
-				
-		String[] majors = new String[2];
-		majors[0] = "Computer Science";
-		majors[1] = "Math";
-		s.setMajors(majors);
-		
-		if (s.getMajors() != null){
+
+		if (s.getMajors() != null) {
 			noData.setVisibility(View.GONE);
-			
+
 			ListView m_listview = (ListView) findViewById(R.id.list_majors);
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1, s.getMajors());
@@ -88,10 +106,8 @@ public class SchoolPage extends Activity implements OnClickListener {
 		case R.id.toggleButton1:
 			Intent i2 = new Intent(Intent.ACTION_SEND);
 			i2.setType("text/plain");
-			i2.putExtra(Intent.EXTRA_EMAIL,
-					new String[] { "recipient@example.com" });
-			i2.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-			i2.putExtra(Intent.EXTRA_TEXT, "body of email");
+			i2.putExtra(Intent.EXTRA_SUBJECT, "Search Results");
+			i2.putExtra(Intent.EXTRA_TEXT, "Name: " + s.getSchoolName());
 			try {
 				startActivity(Intent.createChooser(i2, "Send mail..."));
 			} catch (android.content.ActivityNotFoundException ex) {
