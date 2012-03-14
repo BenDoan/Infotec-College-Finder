@@ -28,6 +28,11 @@ public class SearchResults extends ListActivity {
 	 private String housing  = " ";
 	 private String region = " ";
 	 private String setting = " ";
+	 private String majorSearch;
+	 private String TUSearch;
+	 private String costSearch;
+	 private String stateSearch;
+	 private String settingSearch;
 	 private int minCost;
 	 private int maxCost;
 	 private int minPop;
