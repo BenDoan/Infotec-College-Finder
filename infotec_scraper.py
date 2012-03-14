@@ -7,7 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-NUMER_OF_SCHOOLS = 100
+NUMER_OF_SCHOOLS = 3499
 
 
 def regex_search(regex, regex_string):
@@ -97,6 +97,13 @@ def add_to_csv(file_name, single_list):
     for x in final_list:
         writer.writerow(x)
 
+def check_data_var(var, conditions):
+    if var is conditions:
+        return NOT_FOUND_MESSAGE
+    else:
+        return var
+
+
 def setup():
     """general setup commands"""
     # Cookie Jar
@@ -179,81 +186,71 @@ states = [
 
 school_list = []
 for x in range(NUMER_OF_SCHOOLS):
+    school_name = ""
+    school_state = ""
+    school_type = ""
+    school_total_undergrads = ""
+    school_instate_tuition = ""
+    school_majors = ""
+
     data_list = []
     school_name_regex = ['index', 'collegeboard', 'Find the Right', 'College Search']
-    added_instate_tuition = False
-    added_total_undergrads = False
-    added_school_name = False
-    added_state = False
+    state_regex = ['American Indian', 'Native', 'meta', 'apps', 'Street', 'University', 'college', '\d', 'office']
+    #state_regex = ['American Indian', 'Native', '<a href', '\d', '<title', '<meta', 'strong', 'City', 'Baptist']
+    type_regex = ['Office', 'Campus', '<li>']
 
+
+    #overview page
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&type=adv')
     for y in r.readlines():
         #school name
         if is_regex_in_string('h1',y):
-            if is_regex_from_list_in_string(school_name_regex, y):
-                if is_regex_in_string('<title', y) is not True:
-                    data_list.append(between('<h1>', '</h1>', y))
-                    added_school_name = True
+            if is_regex_in_string('<title', y) is not True:
+                if is_regex_from_list_in_string(school_name_regex, y):
+                    school_name = between('<h1>', '</h1>', y)
         #state
         if is_regex_list_in_string(states, y):
-            if is_regex_in_string('American Indian', y) is False:
-                if is_regex_in_string('Native', y) is False:
-                    if is_regex_in_string('<a href', y) is False:
-                        if is_regex_in_string(r'\d', y) is False:
-                            if is_regex_in_string(r'<title', y) is False:
-                                if is_regex_in_string('<meta', y) is not True:
-                                    if is_regex_in_string('<strong>', y) is not True:
-                                        if is_regex_in_string('City', y) is not True:
-                                            if is_regex_in_string('Baptist', y) is not True:
-                                                stripped_text = y.strip()
-                                                data_list.append(stripped_text)
-                                                added_state = True
-        if added_school_name is True:
-            if added_state is not True:
-                data_list.append(NOT_FOUND_MESSAGE)
+            if is_regex_list_in_string(state_regex, y) is not True:
+                school_state = y.strip()
 
         #school type
-        if is_regex_in_string('<li>', y):
-            if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
-                if is_regex_in_string('Office', y):
-                    if is_regex_in_string('Campus', y):
-                        data_list.append(between('<li>', '</li>', y))
+        if is_regex_from_list_in_string(['Rural', 'urban', 'Urban'], y) is not True:
+            if is_regex_list_in_string(type_regex, y):
+                school_type = between('<li>', '</li>', y)
 
         #total undergrads
         if is_regex_in_string('undergrads', y):
             if is_regex_from_list_in_string(['Degree-seeking'], y) is True:
-                data_list.append(between('<li>Total undergrads: ', '</li>', y))
-                added_total_undergrads = True
+                school_total_undergrads = between('<li>Total undergrads: ', '</li>', y)
+
+
+    #financial page
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=2#')
     for y in r.readlines():
         #in state tuition
         if is_regex_in_string('\$', y):
-            data_list.append(between('<td ><strong>$', '</strong></td>', y))
-            added_instate_tuition = True
+            school_instate_tuition = between('<td ><strong>$', '</strong></td>', y)
             break
 
-    if added_school_name is True:
-        if added_total_undergrads is False:
-            data_list.append(NOT_FOUND_MESSAGE)
-
-        if added_instate_tuition is False:
-            data_list.append(NOT_FOUND_MESSAGE)
-
-    #majors
+    #majors page
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
-    major_string = ""
     for y in r.readlines():
         if is_regex_in_string('major', y):
             to_add = between('">', '</a>', y)
-            major_string += to_add + '.'
+            school_majors += to_add + '.'
+    school_majors = school_majors[2:-1]
 
-    data_list.append(major_string[2:-1])
+    if school_name is not "":
+        data_list.append(school_name)
 
-    if added_school_name is True:
+        data_list.append(check_data_var(school_state, ""))
+        data_list.append(check_data_var(school_type, ""))
+        data_list.append(check_data_var(school_total_undergrads, ""))
+        data_list.append(check_data_var(school_instate_tuition, ""))
+        data_list.append(check_data_var(school_majors, ""))
+
         add_to_csv('data.csv', data_list)
         school_list.append(data_list)
-
-
 
 
 for x in school_list:
