@@ -97,7 +97,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 
 		try {
 			file = new BufferedReader(new InputStreamReader(
-					assetManager.open("sample.csv")));
+					assetManager.open("data.csv")));
 			String line;
 			file.readLine();
 			while ((line = file.readLine()) != null) {
@@ -108,7 +108,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 				String totalUndergrads = lineParts[3];
 				String tuitionInState = lineParts[4];
 				String majorsString = lineParts[5];
-				majors = majorsString.split("\\.");
+				majors = majorsString.split("\\|");
 				//String tuitionOutOfState = lineParts[5];
 				//String roomAndBoardCost = lineParts[6];
 
