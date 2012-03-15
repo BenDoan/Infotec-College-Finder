@@ -22,17 +22,10 @@ public class SearchResults extends ListActivity {
 	 private String[] matchedInfo;
 	 private String[] info;
 	 private String major = " ";
-	 private String sport  = " ";
 	 private String population = " ";
 	 private String cost = " ";
-	 private String housing  = " ";
 	 private String region = " ";
 	 private String setting = " ";
-	 private String majorSearch;
-	 private String TUSearch;
-	 private String costSearch;
-	 private String stateSearch;
-	 private String settingSearch;
 	 private int minCost;
 	 private int maxCost;
 	 private int minPop;
@@ -94,10 +87,7 @@ public class SearchResults extends ListActivity {
 		if (!info[0].equals("")) {
 			major = info[0];
 		}
-		if (!info[1].equals("")) {
-			sport = info[1];
-		}
-		String b = info[2];
+		String b = info[1];
 		if (b.equals("1-1,000")) {
 			minPop = 0;
 			maxPop = 1000;
@@ -133,9 +123,9 @@ public class SearchResults extends ListActivity {
 			maxPop = Integer.MAX_VALUE;
 		} else{
 			minPop = 0;
-			maxPop = Integer.MAX_VALUE;
+			maxPop = 0;
 		}
-		String a = info[3];
+		String a = info[2];
 		if(a.equals("$1,000-$10,000" )){
 			minCost = 0;
 			maxCost = 10000;
@@ -151,25 +141,34 @@ public class SearchResults extends ListActivity {
 		}else if(a.equals("40,001-$50,000+" )){
 			minCost = 40001;
 			maxCost = Integer.MAX_VALUE;
+		}else{
+			minCost = 0;
+			maxCost = 0;
+		}
+		if (!info[3].equals("")) {
+			 region = info[3];
+		}else{
+			region = " ";
 		}
 		if (!info[4].equals("")) {
-			 housing = info[4];
+			setting = info[4];
+		}else{
+			setting = " ";
 		}
-		if (!info[5].equals("")) {
-			 region = info[5];
-		}  
-		if (!info[6].equals("")) {
-			setting = info[6];
-		}
+		
+		
+		
 	}
 	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-			int a = ((schools.get(i).getTuitionInState() + schools.get(i).getTuitionOutOfState())/2) + (schools.get(i).getRoomAndBoardCost()/2);
-				if(minPop <= schools.get(i).getTotalUndergrads() && maxPop >= schools.get(i).getTotalUndergrads() || 
-				   major.equalsIgnoreCase(schools.get(i).getSchoolType()) || 
+			int a = (schools.get(i).getTuitionInState());
+				if(minPop <= schools.get(i).getTotalUndergrads() && 
+				   maxPop >= schools.get(i).getTotalUndergrads() ||
+				   region.equals(schools.get(i).getState()) ||
+				   setting.equals(schools.get(i).getSetting()) ||
 				   minCost <= a && maxCost >= a){
-					matchedSchools.add(schools.get(i));
+						matchedSchools.add(schools.get(i));
 				}			
 		}
 		return matchedSchools;
