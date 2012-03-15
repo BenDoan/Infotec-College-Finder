@@ -145,7 +145,7 @@ public class SearchResults extends ListActivity {
 		}else if(a.equals("$30,001-$40,000" )){
 			minCost = 30001;
 			maxCost = 40000;
-		}else if(a.equals("40,001-$50,000+" )){
+		}else if(a.equals("$40,001-$50,000+" )){
 			minCost = 40001;
 			maxCost = Integer.MAX_VALUE;
 		}else{

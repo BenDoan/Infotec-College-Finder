@@ -80,7 +80,7 @@ public class SchoolPage extends Activity implements OnClickListener {
 		}
 
 		TextView housing = (TextView) findViewById(R.id.curr_housing);
-		if (s.getRoomAndBoardCost()== 0) {
+		if (s.getRoomAndBoardCost() == 0) {
 			housing.setText((R.string.na));
 		} else {
 			housing.setText("" + currency.format(s.getRoomAndBoardCost()));
