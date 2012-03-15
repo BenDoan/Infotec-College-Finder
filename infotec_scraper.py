@@ -231,8 +231,9 @@ for x in range(NUMER_OF_SCHOOLS):
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
     for y in r.readlines():
         if is_regex_in_string('major', y):
-            to_add = between('">', '</a>', y)
-            school_majors += to_add + '|'
+            if is_regex_list_in_string(['javascript', 'Go to drexel', 'img src'], y) is not True:
+                to_add = between('">', '</a>', y)
+                school_majors += to_add + '|'
     school_majors = school_majors[2:-1]
 
     if school_name is not "":

@@ -49,7 +49,7 @@ public class SearchResults extends ListActivity {
       
       if (matchedInfo.length == 0) {
 		matchedInfo = new String[1];
-		matchedInfo[0] = "NO SEARCH RESULTS FOUND";
+		matchedInfo[0] = "No Colleges Match Your Search Criteria";
 	}
       
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list,matchedInfo));
