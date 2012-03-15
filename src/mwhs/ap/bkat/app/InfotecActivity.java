@@ -1,3 +1,10 @@
+/**
+ * COPYRIGHT 
+ *	OF MILLARD WEST HIGH SCHOOL
+ * 		STUDENTS BEN, TRACY, KYLE, AND ANDREW
+ * 		ALL RIGHTS RESERVED
+ */
+
 package mwhs.ap.bkat.app;
 
 import java.io.BufferedReader;
