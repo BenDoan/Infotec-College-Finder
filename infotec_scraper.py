@@ -7,8 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-#NUMER_OF_SCHOOLS = 3499
-NUMER_OF_SCHOOLS = 50
+NUMER_OF_SCHOOLS = 3499
 
 
 def regex_search(regex, regex_string):
@@ -237,18 +236,17 @@ for x in range(NUMER_OF_SCHOOLS):
     school_majors = school_majors[2:-1]
 
     if school_name is not "":
-        if school_state is "Nebraska":
-            data_list.append(school_name)
+        data_list.append(school_name)
 
-            data_list.append(check_data_var(school_state, ""))
-            data_list.append(check_data_var(school_type, ""))
-            data_list.append(check_data_var(school_total_undergrads, ""))
-            data_list.append(check_data_var(school_instate_tuition, ""))
-            data_list.append(check_data_var(school_majors, ""))
+        data_list.append(check_data_var(school_state, ""))
+        data_list.append(check_data_var(school_type, ""))
+        data_list.append(check_data_var(school_total_undergrads, ""))
+        data_list.append(check_data_var(school_instate_tuition, ""))
+        data_list.append(check_data_var(school_majors, ""))
 
-            add_to_csv('data.csv', data_list)
-            school_list.append(data_list)
+        add_to_csv('data.csv', data_list)
+        #school_list.append(data_list)
 
 
-for x in school_list:
-    print x[1]
+#for x in school_list:
+    #print x[1]
