@@ -42,9 +42,9 @@
             android:id="@+id/toggleButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView3"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_alignBottom="@+id/textView3"
             android:textOff="@string/email"
             android:textOn="Emailed"
             android:textSize="15px" />
@@ -189,12 +189,25 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/majors" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_majors:empty" >
 
         <TextView
-            android:id="@+id/list_majors:empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/majors"
+            android:layout_alignBottom="@+id/list_majors:empty"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:text="@string/no_data" />
     </RelativeLayout>
@@ -202,6 +215,6 @@
     <ListView
         android:id="@+id/list_majors"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

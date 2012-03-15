@@ -1,5 +1,6 @@
 package mwhs.ap.bkat.app;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import mwhs.ap.doan.app.R;
@@ -12,63 +13,91 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SchoolPage extends Activity implements OnClickListener {
 	private School s;
 	private Button email;
+	DecimalFormat currency = new DecimalFormat("$###,###,###,###,##0.00");
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.college);
-		
+
 		Bundle b = this.getIntent().getExtras();
-		 s = (School) b.get("school");
 
-		
+		s = (School) b.get("school");
+
 		setTextViews();
-		
-		String[] majors = new String[2];
-		majors[0]= "Computer Science";
-		majors[1]= "Math";		
-		//s.setMajors(majors);
-		
-		String[] sports = new String[2];
-		sports[0]= "Hockey";
-		sports[1]= "Football";		
-		s.setSports(sports);
-		
-		
-		ListView m_listview = (ListView) findViewById(R.id.list_majors);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, s.getMajors());
-		m_listview.setAdapter(adapter);
 
-	}
-	
-	private void setTextViews(){
-		TextView college = (TextView) findViewById(R.id.curr_college);
-		college.setText(s.getSchoolName());
-		
-		TextView setting = (TextView) findViewById(R.id.curr_setting);
-		setting.setText(s.getSetting());
-		
-		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
-		inTuition.setText("" + s.getTuitionInState());
-		
-		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
-		outTuition.setText("" + s.getTuitionOutOfState());
-		
-		TextView size = (TextView) findViewById(R.id.curr_size);
-		size.setText("" + s.getTotalUndergrads());
-		
-		TextView housing = (TextView) findViewById(R.id.curr_housing);
-		housing.setText("" + s.getRoomAndBoardCost());
-		
+		setMajors();
+
 		email = (Button) findViewById(R.id.toggleButton1);
 		email.setOnClickListener(this);
+	}
+
+	private void setTextViews() {
+
+		TextView college = (TextView) findViewById(R.id.curr_college);
+		college.setText(s.getSchoolName());
+
+		TextView setting = (TextView) findViewById(R.id.curr_setting);
+		if (s.getSetting().equalsIgnoreCase("Not set")) {
+			setting.setText(R.string.na);
+		} else {
+			setting.setText(s.getSetting());
+		}
+
+		TextView location = (TextView) findViewById(R.id.curr_location);
+		if (s.getState().equalsIgnoreCase("Not set")) {
+			location.setText(R.string.na);
+		} else {
+			location.setText(s.getState());
+		}
+
+		TextView inTuition = (TextView) findViewById(R.id.curr_in_tuition);
+		if (s.getTuitionInState() == 0) {
+			inTuition.setText((R.string.na));
+		} else {
+			inTuition.setText("" + currency.format(s.getTuitionInState()));
+		}
+
+		TextView outTuition = (TextView) findViewById(R.id.curr_out_tuition);
+		if (s.getTuitionOutOfState() == 0) {
+			outTuition.setText((R.string.na));
+		} else {
+			outTuition.setText("" + currency.format(s.getTuitionOutOfState()));
+		}
+
+		TextView size = (TextView) findViewById(R.id.curr_size);
+		if (s.getTotalUndergrads() == 0) {
+			size.setText((R.string.na));
+		} else {
+			size.setText("" + s.getTotalUndergrads());
+		}
+
+		TextView housing = (TextView) findViewById(R.id.curr_housing);
+		if (s.getRoomAndBoardCost()== 0) {
+			housing.setText((R.string.na));
+		} else {
+			housing.setText("" + currency.format(s.getRoomAndBoardCost()));
+		}
+	}
+
+	public void setMajors() {
+		View noData = findViewById(R.id.list_majors_empty);
+
+		if (s.getMajors() != null) {
+			noData.setVisibility(View.GONE);
+
+			ListView m_listview = (ListView) findViewById(R.id.list_majors);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+					android.R.layout.simple_list_item_1, s.getMajors());
+			m_listview.setAdapter(adapter);
+		}
 	}
 
 	@Override

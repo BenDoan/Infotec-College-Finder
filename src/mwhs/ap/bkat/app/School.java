@@ -13,7 +13,7 @@ public class School implements Parcelable{
 	private int roomAndBoardCost;
 	private String[] majors;
 	private String[] sports;
-	
+
 	public String[] getMajors() {
 		return majors;
 	}
@@ -41,7 +41,6 @@ public class School implements Parcelable{
 			this.tuitionInState = Integer.parseInt(tuitionInState);
 			this.tuitionOutOfState = Integer.parseInt(tuitionOutOfState);
 			this.roomAndBoardCost = Integer.parseInt(roomAndBoardCost);
-			
 	}
 
 	public School(Parcel in) {

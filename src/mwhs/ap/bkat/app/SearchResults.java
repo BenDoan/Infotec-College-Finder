@@ -86,6 +86,8 @@ public class SearchResults extends ListActivity {
 	private void setVariables() {
 		if (!info[0].equals("")) {
 			major = info[0];
+		}else{
+			major =" ";
 		}
 		String b = info[1];
 		if (b.equals("1-1,000")) {
@@ -123,7 +125,7 @@ public class SearchResults extends ListActivity {
 			maxPop = Integer.MAX_VALUE;
 		} else{
 			minPop = 0;
-			maxPop = 0;
+			maxPop = Integer.MAX_VALUE;
 		}
 		String a = info[2];
 		if(a.equals("$1,000-$10,000" )){
@@ -143,7 +145,7 @@ public class SearchResults extends ListActivity {
 			maxCost = Integer.MAX_VALUE;
 		}else{
 			minCost = 0;
-			maxCost = 0;
+			maxCost = Integer.MAX_VALUE;
 		}
 		if (!info[3].equals("")) {
 			 region = info[3];
@@ -162,15 +164,52 @@ public class SearchResults extends ListActivity {
 	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-			int a = (schools.get(i).getTuitionInState());
-				if(minPop <= schools.get(i).getTotalUndergrads() && 
-				   maxPop >= schools.get(i).getTotalUndergrads() ||
-				   region.equals(schools.get(i).getState()) ||
-				   setting.equals(schools.get(i).getSetting()) ||
-				   minCost <= a && maxCost >= a){
-						matchedSchools.add(schools.get(i));
-				}			
-		}
+//				if(minPop <= schools.get(i).getTotalUndergrads() && 
+//				   maxPop >= schools.get(i).getTotalUndergrads() ||
+//				   region.equals(schools.get(i).getState()) ||
+//				   setting.equals(schools.get(i).getSetting()) ||
+//				   minCost <= a && maxCost >= a){
+//						matchedSchools.add(schools.get(i));
+//				}
+				if (minPop <= schools.get(i).getTotalUndergrads() && 
+				   maxPop >= schools.get(i).getTotalUndergrads()) {
+					matchedSchools.add(schools.get(i));
+				}
+		}		
+				for (int j = 0; j < matchedSchools.size(); j++) {
+					int a = (matchedSchools.get(j).getTuitionInState());
+					School l = matchedSchools.get(j);
+					boolean majorFound = false;
+					boolean remove = false;
+					if (!region.equals(" ")) {
+						if (!region.equals(matchedSchools.get(j).getState())) {
+						remove = true;
+					}
+					}
+					if (!setting.equals(" ")) {
+						if (!setting.equals(matchedSchools.get(j).getSetting())) {
+						remove = true;
+					}
+					}
+					if (!(minCost <= a) || !(maxCost >= a)) {
+						remove = true;
+						
+					}
+					if (!major.equals(" ")) {
+						for (int j2 = 0; j2 < matchedSchools.get(j).getMajors().length; j2++) {
+						
+						if (major.equalsIgnoreCase(matchedSchools.get(j).getMajors()[j2])) {
+							majorFound = true;
+							break;
+						}
+						}if (!majorFound) {
+							remove = true;
+						}
+					}
+					if (remove) {
+						matchedSchools.remove(j--);
+					}
+				}
 		return matchedSchools;
 		
 	}

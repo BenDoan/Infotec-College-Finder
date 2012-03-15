@@ -26,11 +26,11 @@
         <item>"Hockey"</item>
         <item>"Baseball"</item>
     </string-array>
-    <string-array name = "setting_array" >
-        <item >""</item>
-        <item >"Suburban setting"</item>
-        <item >"Rural setting"</item>
-        <item >"Urban setting"</item>
+    <string-array name="setting_array">
+        <item>""</item>
+        <item>"Suburban setting"</item>
+        <item>"Rural setting"</item>
+        <item>"Urban setting"</item>
     </string-array>
     <string-array name="tuition_array">
         <item>""</item>
@@ -116,5 +116,6 @@
     <string name="setting_label">Setting:</string>
     <string name="majors">Majors</string>
     <string name="no_data">No Information is Available</string>
+    <string name="na">N/A</string>
 
 </resources>
