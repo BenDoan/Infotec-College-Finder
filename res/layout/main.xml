@@ -41,31 +41,6 @@
 
         <RelativeLayout
             android:orientation="horizontal"
-            android:id="@+id/llSports"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/sports1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sports" />
-
-            <Spinner
-                android:layout_width="205dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/spinnerSports"
-                android:layout_height="wrap_content"
-                android:background="#bbb"
-                android:prompt="@string/selectionSports"
-                android:textColor="#fff" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:orientation="horizontal"
             android:id="@+id/llPopulation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,29 +90,6 @@
                 android:background="#bbb"
                 android:textColor="#fff" >
             </Spinner>
-        </RelativeLayout>
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:id="@+id/llHousing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/housing1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/housing" />
-
-            <EditText
-                android:id="@+id/housing2"
-                android:layout_width="205dp"
-                android:layout_alignParentRight="true"
-                android:layout_height="wrap_content"
-                android:inputType="text" 
-                android:background="#bbb"
-                android:paddingLeft="5dp"
-                android:layout_marginLeft="5dp"/>
         </RelativeLayout>
 
         <RelativeLayout

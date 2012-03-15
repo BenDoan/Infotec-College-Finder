@@ -27,7 +27,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 	private Button search;
 	private ArrayList<School> schools = new ArrayList<School>();
 	private ArrayList<String> var = new ArrayList<String>();
-	private String[] vars = new String[7];
+	private String[] vars = new String[5];
 	private String[] majors;
 	private Spinner spinnersport;
 	private Spinner spinnertuition;
@@ -52,22 +52,9 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		readCsvValues();
 
 		mMajorView = (EditText) findViewById(R.id.major2);
-		mHouseView = (EditText) findViewById(R.id.housing2);
-
-		spinnersport = (Spinner) findViewById(R.id.spinnerSports);
-
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-				this, R.array.sports_array,
-				android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		search = (Button) findViewById(R.id.search);
 		search.setOnClickListener(this);
-
-		spinnersport.setAdapter(adapter);
-		spinnersport.setOnItemSelectedListener(new MyOnItemSelectedListener());
-		Object s = spinnersport.getSelectedItem();
-		System.out.println(s);
 
 		spinnertuition = (Spinner) findViewById(R.id.spinnerTuition);
 		ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
@@ -112,7 +99,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 			file = new BufferedReader(new InputStreamReader(
 					assetManager.open("sample.csv")));
 			String line;
-			file.readLine();
+			//file.readLine();
 			while ((line = file.readLine()) != null) {
 				String[] lineParts = line.split(",");
 				String schoolName = lineParts[0];
@@ -121,7 +108,7 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 				String totalUndergrads = lineParts[3];
 				String tuitionInState = lineParts[4];
 				String majorsString = lineParts[5];
-				majors = majorsString.split("\\.");
+				majors = majorsString.split("\\|");
 				//String tuitionOutOfState = lineParts[5];
 				//String roomAndBoardCost = lineParts[6];
 
@@ -162,10 +149,8 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 		case R.id.search: {
 			var.clear();
 			var.add(mMajorView.getText().toString());
-			var.add(spinnersport.getSelectedItem().toString());
 			var.add(spinnerTU.getSelectedItem().toString());
 			var.add(spinnertuition.getSelectedItem().toString());
-			var.add(mHouseView.getText().toString());
 			var.add(spinnerregion.getSelectedItem().toString());
 			var.add(spinnerSetting.getSelectedItem().toString());
 

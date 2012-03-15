@@ -7,8 +7,7 @@ import datetime
 import csv
 
 NOT_FOUND_MESSAGE = 'Not set'
-#NUMER_OF_SCHOOLS = 3499
-NUMER_OF_SCHOOLS = 50
+NUMER_OF_SCHOOLS = 3499
 
 
 def regex_search(regex, regex_string):
@@ -232,23 +231,23 @@ for x in range(NUMER_OF_SCHOOLS):
     r = br.open('http://collegesearch.collegeboard.com/search/CollegeDetail.jsp?collegeId=' + str(x) + '&profileId=7')
     for y in r.readlines():
         if is_regex_in_string('major', y):
-            to_add = between('">', '</a>', y)
-            school_majors += to_add + '|'
+            if is_regex_list_in_string(['javascript', 'Go to drexel', 'img src'], y) is not True:
+                to_add = between('">', '</a>', y)
+                school_majors += to_add + '|'
     school_majors = school_majors[2:-1]
 
     if school_name is not "":
-        if school_state is "Nebraska":
-            data_list.append(school_name)
+        data_list.append(school_name)
 
-            data_list.append(check_data_var(school_state, ""))
-            data_list.append(check_data_var(school_type, ""))
-            data_list.append(check_data_var(school_total_undergrads, ""))
-            data_list.append(check_data_var(school_instate_tuition, ""))
-            data_list.append(check_data_var(school_majors, ""))
+        data_list.append(check_data_var(school_state, ""))
+        data_list.append(check_data_var(school_type, ""))
+        data_list.append(check_data_var(school_total_undergrads, ""))
+        data_list.append(check_data_var(school_instate_tuition, ""))
+        data_list.append(check_data_var(school_majors, ""))
 
-            add_to_csv('data.csv', data_list)
-            school_list.append(data_list)
+        add_to_csv('data.csv', data_list)
+        #school_list.append(data_list)
 
 
-for x in school_list:
-    print x[1]
+#for x in school_list:
+    #print x[1]

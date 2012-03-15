@@ -22,10 +22,8 @@ public class SearchResults extends ListActivity {
 	 private String[] matchedInfo;
 	 private String[] info;
 	 private String major = " ";
-	 private String sport  = " ";
 	 private String population = " ";
 	 private String cost = " ";
-	 private String housing  = " ";
 	 private String region = " ";
 	 private String setting = " ";
 	 private int minCost;
@@ -48,6 +46,11 @@ public class SearchResults extends ListActivity {
       for (int i = 0; i < matchedSchools.size(); i++) {
 		matchedInfo[i] = matchedSchools.get(i).getSchoolName();
       }
+      
+      if (matchedInfo.length == 0) {
+		matchedInfo = new String[1];
+		matchedInfo[0] = "No Colleges Match Your Search Criteria";
+	}
       
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list,matchedInfo));
       
@@ -88,11 +91,10 @@ public class SearchResults extends ListActivity {
 	private void setVariables() {
 		if (!info[0].equals("")) {
 			major = info[0];
+		}else{
+			major =" ";
 		}
-		if (!info[1].equals("")) {
-			sport = info[1];
-		}
-		String b = info[2];
+		String b = info[1];
 		if (b.equals("1-1,000")) {
 			minPop = 0;
 			maxPop = 1000;
@@ -130,7 +132,7 @@ public class SearchResults extends ListActivity {
 			minPop = 0;
 			maxPop = Integer.MAX_VALUE;
 		}
-		String a = info[3];
+		String a = info[2];
 		if(a.equals("$1,000-$10,000" )){
 			minCost = 0;
 			maxCost = 10000;
@@ -146,26 +148,73 @@ public class SearchResults extends ListActivity {
 		}else if(a.equals("40,001-$50,000+" )){
 			minCost = 40001;
 			maxCost = Integer.MAX_VALUE;
+		}else{
+			minCost = 0;
+			maxCost = Integer.MAX_VALUE;
+		}
+		if (!info[3].equals("")) {
+			 region = info[3];
+		}else{
+			region = " ";
 		}
 		if (!info[4].equals("")) {
-			 housing = info[4];
+			setting = info[4];
+		}else{
+			setting = " ";
 		}
-		if (!info[5].equals("")) {
-			 region = info[5];
-		}  
-		if (!info[6].equals("")) {
-			setting = info[6];
-		}
+		
+		
+		
 	}
 	
 	private ArrayList<School> compareValues() {
 		for (int i = 0; i < schools.size(); i++) {
-			int a = ((schools.get(i).getTuitionInState() + schools.get(i).getTuitionOutOfState())/2) + (schools.get(i).getRoomAndBoardCost()/2);
-				if(minPop <= schools.get(i).getTotalUndergrads() && maxPop >= schools.get(i).getTotalUndergrads() ||
-				   minCost <= a && maxCost >= a){
+//				if(minPop <= schools.get(i).getTotalUndergrads() && 
+//				   maxPop >= schools.get(i).getTotalUndergrads() ||
+//				   region.equals(schools.get(i).getState()) ||
+//				   setting.equals(schools.get(i).getSetting()) ||
+//				   minCost <= a && maxCost >= a){
+//						matchedSchools.add(schools.get(i));
+//				}
+				if (minPop <= schools.get(i).getTotalUndergrads() && 
+				   maxPop >= schools.get(i).getTotalUndergrads()) {
 					matchedSchools.add(schools.get(i));
-				}			
-		}
+				}
+		}		
+				for (int j = 0; j < matchedSchools.size(); j++) {
+					int a = (matchedSchools.get(j).getTuitionInState());
+					School l = matchedSchools.get(j);
+					boolean majorFound = false;
+					boolean remove = false;
+					if (!region.equals(" ")) {
+						if (!region.equals(matchedSchools.get(j).getState())) {
+						remove = true;
+					}
+					}
+					if (!setting.equals(" ")) {
+						if (!setting.equals(matchedSchools.get(j).getSetting())) {
+						remove = true;
+					}
+					}
+					if (!(minCost <= a) || !(maxCost >= a)) {
+						remove = true;
+						
+					}
+					if (!major.equals(" ")) {
+						for (int j2 = 0; j2 < matchedSchools.get(j).getMajors().length; j2++) {
+						
+						if (major.equalsIgnoreCase(matchedSchools.get(j).getMajors()[j2])) {
+							majorFound = true;
+							break;
+						}
+						}if (!majorFound) {
+							remove = true;
+						}
+					}
+					if (remove) {
+						matchedSchools.remove(j--);
+					}
+				}
 		return matchedSchools;
 		
 	}
