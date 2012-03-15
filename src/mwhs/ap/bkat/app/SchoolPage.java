@@ -107,7 +107,8 @@ public class SchoolPage extends Activity implements OnClickListener {
 			Intent i2 = new Intent(Intent.ACTION_SEND);
 			i2.setType("text/plain");
 			i2.putExtra(Intent.EXTRA_SUBJECT, "Search Results");
-			i2.putExtra(Intent.EXTRA_TEXT, "Name: " + s.getSchoolName());
+			i2.putExtra(Intent.EXTRA_TEXT, "Name: " + s.getSchoolName()+ "\nLocation: " + s.getState() + "\nCost: $" + s.getTuitionInState() + "\nTotal Undergrads: " + s.getTotalUndergrads()
+					+ "\nSetting: " + s.getSetting());
 			try {
 				startActivity(Intent.createChooser(i2, "Send mail..."));
 			} catch (android.content.ActivityNotFoundException ex) {
