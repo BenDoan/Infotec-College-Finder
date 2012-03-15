@@ -97,9 +97,9 @@ public class InfotecActivity extends Activity implements OnClickListener, Serial
 
 		try {
 			file = new BufferedReader(new InputStreamReader(
-					assetManager.open("data.csv")));
+					assetManager.open("sample.csv")));
 			String line;
-			file.readLine();
+			//file.readLine();
 			while ((line = file.readLine()) != null) {
 				String[] lineParts = line.split(",");
 				String schoolName = lineParts[0];
