@@ -47,6 +47,11 @@ public class SearchResults extends ListActivity {
 		matchedInfo[i] = matchedSchools.get(i).getSchoolName();
       }
       
+      if (matchedInfo.length == 0) {
+		matchedInfo = new String[1];
+		matchedInfo[0] = "NO SEARCH RESULTS FOUND";
+	}
+      
       setListAdapter(new ArrayAdapter<String>(this, mwhs.ap.doan.app.R.layout.results_list,matchedInfo));
       
       ListView lv = getListView();
